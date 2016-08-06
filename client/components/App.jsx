@@ -31,11 +31,11 @@ class App extends React.Component {
 
         switch (this.state.view.split('/')[0]) {
             case "ABOUT":
-                view = <About {...this.state} />; break;
+                view = <About />; break;
             case "CONTACT":
-                view = <Contact {...this.state} />; break;
+                view = <Contact />; break;
             case "NETWORK":
-                view = <Network {...this.state} />; break;
+                view = <Network />; break;
             case "DOCUMENTATION":
                 view = <Documentation {...this.state} />;
         }
