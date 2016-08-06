@@ -14,7 +14,7 @@ app.use(parser.urlencoded({ extended: true }));
 app.use("/", express.static(__dirname + "/public"));
 app.use("/api", require("./controllers/"));
 app.get("/*", (req, res) => {
-    res.sendFile(__dirname + "/views/Home.html");
+    res.sendFile(__dirname + "/views/App.html");
 });
 
 /* Start Server */
