@@ -21,6 +21,7 @@
     "marked": "^0.3.6",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "request": "^2.74.0",
     "route-parser": "0.0.5"
   },
   "devDependencies": {
