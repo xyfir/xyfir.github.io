@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 
 // Modules
-import request from "lib/request/";
+import request from "lib/request";
 import onHashChange from "lib/url/on-change";
 
 // Constants
