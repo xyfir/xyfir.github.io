@@ -31,7 +31,7 @@ export default class DocumentationList extends React.Component {
                                         }</a>
                                         <span className="description">{
                                             dO.description
-                                        }</a>
+                                        }</span>
                                     </li>
                                 );
                             })}</ul>
