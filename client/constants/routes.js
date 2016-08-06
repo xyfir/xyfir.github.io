@@ -7,7 +7,7 @@ const routes = [
     ["/network", VIEWS.NETWORK],
 
     ["/documentation", VIEWS.LIST_DOCS],
-    ["/documentation/:site/:file"]
+    ["/documentation/:site/:file", VIEWS.VIEW_DOC]
 ];
 
 export default routes;
