@@ -1,0 +1,204 @@
+/* MISC */
+body {
+	line-height: 142%;
+	font-family: "Source Sans Pro",Calibri,Candara,sans-serif;
+    text-align: center;
+	margin: 3.5em 0em;
+}
+hr {
+	border: 0;
+    height: 1px;
+	margin: 2em;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+button {
+    cursor: pointer;
+}
+span[class^="icon-"]:hover {
+    cursor: pointer;
+    color: $dgray;
+}
+table {
+	margin: auto;
+}
+p {
+	width: 80%;
+	margin: auto;
+}
+
+
+/* LINKS */
+a {
+	color: $blue;
+    cursor: pointer;
+	text-decoration: none;
+}
+a:hover, a:focus {
+	color: $lblue;
+}
+.link-lg {
+	font-size: 125%;
+}
+
+
+/* BUTTONS */
+input[type=submit], button, .btn {
+	height: 3.142em;
+	min-width: 7em;
+	color:#fff;
+	padding: 5px 10px;
+	border: 0;
+	text-transform: uppercase;
+	border-radius: 0.15em;
+	margin: 1em 0.5em;
+}
+.btn-sm {
+	height: 2.142em;
+	min-width: 5em;
+}
+.btn-lg {
+	font-size: 140%;
+}
+.btn-primary {
+	background-color: $blue;
+}
+.btn-primary:hover {
+	background-color: $lblue; 
+}
+.btn-secondary {
+	background-color: $gray;
+}
+.btn-secondary:hover {
+	background-color: $lgray;
+}
+.btn-danger {
+	background-color: $red;
+}
+.btn-danger:hover {
+	background-color: $lred;
+}
+input[type=submit]:focus, button:focus {
+	background-color: $lblack;
+}
+a.btn:hover {
+    color: white;
+}
+
+/* DEFINITION LISTS */
+dl {
+
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+		margin: 0em;
+		font-size: 90%;
+	}
+
+}
+
+
+/* FORMS */
+input, select {
+	font-size: 100%;
+}
+input[type=text], input[type=number], input[type=search] {
+    text-align: center;
+	height: 1.571em;
+	width: 16em;
+}
+input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus, input[type=search]:focus {
+	border-color: $gray;
+	outline: none;
+}
+input[type=text], input[type=number], input[type=search], textarea, select {
+	padding: 4px 8px;
+	color: $lblack;
+	border: 1px solid $llgray;
+	background-color: rgba(255,255,255,.8);
+	display: block;
+	margin: 1em auto;
+}
+label {
+    display: block;
+    font-weight: bold;
+}
+.input-description {
+    font-size: 90%;
+    color: $dgray;
+    display: block;
+    width: 80%;
+    margin: auto;
+}
+input[type=checkbox] {
+    margin-bottom: 1em;
+}
+.stripe-form {
+
+	input[type=number] {
+		width: 5em;
+	}
+
+	.expiration {
+
+		input[type=number] {
+			display: inline;
+		}
+
+	}
+
+}
+
+/* Sweet alert */
+.sweet-alert > fieldset > input {
+    display: none;
+}
+.sweet-alert p {
+	margin: auto !important;
+}
+
+/* NAV-BAR */
+nav.nav-bar {
+	
+	background-color: $lllgray;
+	margin-bottom: 1em;
+	padding: 0.5em 0em;
+	font-size: 115%;	
+	position: fixed;
+	left: 0%;
+	right: 0%;
+	top: 0%;
+	z-index: 1;
+	
+	.left, .right, .title {
+		display: inline-block;
+		width: 30%;
+	}
+	
+	.title {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		vertical-align: bottom;
+	}
+	
+	span {
+		margin-left: 0.4em;
+	}
+	
+}
+.navbar-sub {
+
+	background-color: $lllgray;
+	border: solid 0.1em $llgray;
+	width: 60%;
+	margin: auto;
+	padding: 0.3em;
+	margin-bottom: 1em;
+
+	a {
+		margin: 0.5em
+	}
+
+}
