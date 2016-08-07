@@ -13,15 +13,16 @@ export default class Network extends React.Component {
         return (
             <section className="network">
                 <h2>Network</h2>
+                <hr />
                 <div className="projects">{
                     Object.keys(projects).map(p => {
                         return (
                             <div className="project">
-                                <h2 className="name">
+                                <h3 className="name">
                                     <a href={projects[p].link} target="_blank">{
                                         projects[p].name
                                     }</a>
-                                </h2>
+                                </h3>
                                 <span className="description">{
                                     projects[p].description
                                 }</span>
