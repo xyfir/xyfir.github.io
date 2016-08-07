@@ -1,0 +1,57 @@
+section.contact-us {
+
+    .g-recaptcha {
+        display: inline-block;
+    }
+
+    .recaptcha-wrapper {
+        text-align: center;
+    }
+
+    textarea {
+        width: 50em;
+        height: 20em;
+    }
+
+}
+
+section.network {
+
+    .project {
+
+        background-color: $lllgray;
+        border: solid 0.1em $llgray;
+        width: 70%;
+        margin: 1em auto;
+        padding: 0.5em;
+
+        h3.name {
+            margin-bottom: 0.3em;
+            margin-top: 0em;
+        }
+
+    }
+
+}
+
+section.documentation-list {
+
+    ul.projects {
+        
+        width: 50%;
+        margin: auto;
+        text-align: left;
+
+        li.documentation-item {
+
+            .description {
+                font-size: 90%;
+                display: block;
+                color: $dgray;
+            }
+
+        }
+
+    }
+
+}
