@@ -53,6 +53,8 @@ export default class Contact extends React.Component {
                     Please do not send the same message multiple times if you're not receiving a reply.
                 </p>
 
+                <hr />
+
                 <form className="contact" onSubmit={() => this.onSend()}>
                     <label>Regarding</label>
                     <select ref="regarding" defaultValue="—">
@@ -81,12 +83,14 @@ export default class Contact extends React.Component {
                     <label>Message</label>
                     <textarea ref="message" />
 
-                    <div
-                        class="g-recaptcha"
-                        data-sitekey={RECAPTCHA_KEY}
-                    />
+                    <div className="recaptcha-wrapper">
+                        <div
+                            className="g-recaptcha"
+                            data-sitekey={RECAPTCHA_KEY}
+                        />
+                    </div>
 
-                    <button onClick={() => this.onSend()} className="btn=primary">
+                    <button onClick={() => this.onSend()} className="btn-primary">
                         Send Message
                     </button>
                 </form>
