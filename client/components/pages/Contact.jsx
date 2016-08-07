@@ -89,11 +89,11 @@ export default class Contact extends React.Component {
                             data-sitekey={RECAPTCHA_KEY}
                         />
                     </div>
-
-                    <button onClick={() => this.onSend()} className="btn-primary">
-                        Send Message
-                    </button>
                 </form>
+                
+                <button onClick={() => this.onSend()} className="btn-primary">
+                    Send Message
+                </button>
             </section>
         );
     }
