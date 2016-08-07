@@ -52,7 +52,7 @@ const projects = {
     },
 
     "libyq-annotations": {
-        name: "Libyq annotations",
+        name: "Libyq Annotations",
         link: "https://annotations.libyq.com/",
         group: ["Other", "Libyq"],
         description: "A single platform for storing, finding, and managing interactive annotations for ebooks.",
