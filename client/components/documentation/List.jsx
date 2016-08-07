@@ -13,8 +13,11 @@ export default class DocumentationList extends React.Component {
         return (
             <section className="documentation-list">
                 <h2>Documentation List</h2>
+                
+                <hr />
+                
                 <ul className="projects">{Object.keys(projects).map(p => {
-                    pO = projects[p];
+                    const pO = projects[p];
 
                     return (
                         <li className="project">
@@ -22,7 +25,7 @@ export default class DocumentationList extends React.Component {
                             <ul>{!Object.keys(pO.documentation).length ? (
                                 <li>No documentation</li>
                             ) : Object.keys(pO.documentation).map(d => {
-                                dO = pO.documentation[d];
+                                const dO = pO.documentation[d];
 
                                 return (
                                     <li className="documentation-item">
