@@ -7,6 +7,8 @@ import projects from "constants/projects";
 // Modules
 import request from "lib/request";
 
+import DynamicIframe from "components/misc/DynamicIframe";
+
 export default class ViewDocumentation extends React.Component {
 
     constructor(props) {
@@ -33,9 +35,20 @@ export default class ViewDocumentation extends React.Component {
             + this.state.documentation.location + ".md";
 
         request({url, success: (res) => {
-            this.refs.frame.contentDocument.body.innerHTML = marked(
-                window.atob(res.content), { santize: true }
-            );
+            // Add CSS files
+            this.refs.frame.refs.frame.contentDocument.head.innerHTML = `
+                <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
+                <link rel="stylesheet" href="css/style.css">
+            `;
+
+            // Convert markdown to html
+            this.refs.frame.refs.frame.contentDocument.body.innerHTML = `
+                <div class="markdown">${
+                    marked(
+                        window.atob(res.content), { santize: true }
+                    )
+                }</div>
+            `;
         }});
     }
 
@@ -43,13 +56,15 @@ export default class ViewDocumentation extends React.Component {
         return (
             <section className="view-documentation">
                 <h2 className="title">
-                    {this.state.project.name} | {this.state.documentation.name}
+                    {this.state.project.name}: {this.state.documentation.name}
                 </h2>
                 <span className="description">{
                     this.state.documentation.description
                 }</span>
 
-                <iframe src="" ref="frame" className="documentation" />
+                <hr />
+
+                <DynamicIframe ref="frame" className="documentation" />
             </section>
         );
     }
