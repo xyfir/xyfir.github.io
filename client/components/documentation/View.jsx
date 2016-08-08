@@ -38,7 +38,7 @@ export default class ViewDocumentation extends React.Component {
             // Add CSS files
             this.refs.frame.refs.frame.contentDocument.head.innerHTML = `
                 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
-                <link rel="stylesheet" href="css/style.css">
+                <link rel="stylesheet" href="static/css/style.css">
             `;
 
             // Convert markdown to html
