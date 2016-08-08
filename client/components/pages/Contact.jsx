@@ -58,7 +58,7 @@ export default class Contact extends React.Component {
                 <form className="contact" onSubmit={() => this.onSend()}>
                     <label>Regarding</label>
                     <select ref="regarding" defaultValue="—">
-                        <option value="—">—</option>
+                        <option value="-">-</option>
                         {Object.keys(projects).map(p => {
                             const t = projects[p].name;
                             return <option value={t}>{t}</option>;
@@ -67,7 +67,7 @@ export default class Contact extends React.Component {
 
                     <label>Tag</label>
                     <select ref="tag" defaultValue="—">
-                        <option value="—">—</option>
+                        <option value="-">-</option>
                         <option value="Support">Support</option>
                         <option value="Question">Question</option>
                         <option value="Feedback">Feedback</option>
