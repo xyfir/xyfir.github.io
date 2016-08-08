@@ -16,7 +16,7 @@ const isDev = require("./config").environment.type == "dev";
 	- autoprefixer
 	- minifies / gzip
 */
-gulp.task("css", function () {
+gulp.task("css", function() {
     return gulp.src("./client/styles/style.css")
         .pipe(postcss([
             precss({}),
@@ -34,7 +34,7 @@ gulp.task("css", function () {
 	- bundles React components
 	- minifies / gzip
 */
-gulp.task("client", function () {
+gulp.task("client", function() {
     const browserify = require("browserify");
     const streamify = require("gulp-streamify");
     const babelify = require("babelify");
@@ -61,4 +61,18 @@ gulp.task("client", function () {
         .on('error', gutil.log))
 		.pipe(!isDev ? gzip() : gutil.noop())
 		.pipe(gulp.dest('./public/js/'));
+});
+
+/*
+	favicons
+    - generate favicons from icon.png
+    - place in public/icons
+*/
+gulp.task("favicons", function() {
+    const favicons = require("gulp-favicons");
+
+    return gulp.src("icon.png")
+    .pipe(favicons({}))
+    .on("error", gutil.log)
+    .pipe(gulp.dest("./public/icons/"));
 });
