@@ -12,7 +12,7 @@ import { URL, XACC } from "constants/config";
 import About from "components/pages/About";
 import Contact from "components/pages/Contact";
 import Network from "components/pages/Network";
-import Documentation from "components/documentation/";
+import Documentation from "components/documentation/Index";
 
 class App extends React.Component {
 
