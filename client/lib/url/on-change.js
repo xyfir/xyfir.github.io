@@ -2,7 +2,7 @@ import RouteParser from "route-parser";
 
 // Constants
 import routes from "constants/routes";
-import { HOME } from "constants/views";
+import { ABOUT } from "constants/views";
 
 // Modules
 import parseQuery from "./parse-query-string";
@@ -27,7 +27,7 @@ export default function() {
 
     // Set default view / route
     if (!view) {
-        view = HOME;
+        view = ABOUT;
         hash.route = "/";
     }
     // Parse query string
