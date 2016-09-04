@@ -21,7 +21,8 @@ export default class ViewDocumentation extends React.Component {
             location.hash = "/documentation";
         }
         else {
-            const d = p.documentation[this.props.hash.params.file];
+            const d = p.documentation[this.props.hash.params.file]
+                || p.documentation.legal[this.props.hash.params.file];
 
             if (d === undefined)
                 location.hash = "/documentation";
