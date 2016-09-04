@@ -25,7 +25,7 @@ module.exports = function(req, res) {
         form: {
             secret: config.keys.recaptcha,
             response: req.body.recaptcha,
-            remoteip: req.id
+            remoteip: req.ip
         }
     }, (e, r, body) => {
         if (e || !JSON.parse(body).success) {
