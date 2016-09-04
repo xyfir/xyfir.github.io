@@ -10,6 +10,16 @@ const projects = {
                 name: "Integration For Developers",
                 location: "xyfir/accounts/integration",
                 description: "Learn how to integrate Xyfir Accounts into your site or app."
+            },
+            legal: {
+                "privacy": {
+                    name: "Privacy Policy",
+                    location: "xyfir/accounts/privacy"
+                },
+                "tos": {
+                    name: "Terms of Service",
+                    location: "xyfir/accounts/tos"
+                }
             }
         }
     },
@@ -39,6 +49,16 @@ const projects = {
                 name: "For Users",
                 location: "xyfir/ads/users",
                 description: "Xyfir Ads was developed with the end user in mind. Learn about what makes us different."
+            },
+            legal: {
+                "privacy": {
+                    name: "Privacy Policy",
+                    location: "xyfir/ads/privacy"
+                },
+                "tos": {
+                    name: "Terms of Service",
+                    location: "xyfir/ads/tos"
+                }
             }
         }
     },
@@ -48,7 +68,18 @@ const projects = {
         link: "https://libyq.com/",
         group: ["Other", "Libyq"],
         description: "An all-in-one cloud-synced ebook reader, storage, and management system.",
-        documentation: {}
+        documentation: {
+            legal: {
+                "privacy": {
+                    name: "Privacy Policy",
+                    location: "libyq/privacy"
+                },
+                "tos": {
+                    name: "Terms of Service",
+                    location: "libyq/tos"
+                }
+            }
+        }
     },
 
     "libyq-annotations": {
@@ -61,6 +92,16 @@ const projects = {
                 name: "Integration For Ebook Reader Developers",
                 location: "libyq/annotations/integration",
                 description: "Learn how to integrate Libyq Annotations into your ebook reader."
+            },
+            legal: {
+                "privacy": {
+                    name: "Privacy Policy",
+                    location: "libyq/annotations/privacy"
+                },
+                "tos": {
+                    name: "Terms of Service",
+                    location: "libyq/annotations/tos"
+                }
             }
         }
     },
@@ -70,7 +111,18 @@ const projects = {
         link: "https://ptorx.com/",
         group: ["Other"],
         description: "An extra layer of security, privacy, and control for your emails.",
-        documentation: {}
+        documentation: {
+            legal: {
+                "privacy": {
+                    name: "Privacy Policy",
+                    location: "ptorx/privacy"
+                },
+                "tos": {
+                    name: "Terms of Service",
+                    location: "ptorx/tos"
+                }
+            }
+        }
     },
 
     "vynote": {
@@ -83,6 +135,16 @@ const projects = {
                 name: "User Help Docs",
                 location: "vynote/help",
                 description: "Better understand certain features within Vynote."
+            },
+            legal: {
+                "privacy": {
+                    name: "Privacy Policy",
+                    location: "vynote/privacy"
+                },
+                "tos": {
+                    name: "Terms of Service",
+                    location: "vynote/tos"
+                }
             }
         }
     }
