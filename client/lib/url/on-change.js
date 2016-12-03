@@ -35,6 +35,11 @@ export default function() {
         hash.query = parseQuery();
     }
 
-    return { view, hash };
+    const title = document.title =
+        "Xyfir - " + view.split('/')[0]
+            .toLowerCase()
+            .replace(/\b[a-z]/g, f => f.toUpperCase()); 
+
+    return { view, hash, title };
 
 }
