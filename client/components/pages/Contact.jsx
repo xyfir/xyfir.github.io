@@ -11,6 +11,12 @@ export default class Contact extends React.Component {
 
     constructor(props) {
         super(props);
+
+        // Load reCAPTCHA lib
+        let element = document.createElement("script");
+        element.src = "https://www.google.com/recaptcha/api.js";
+        element.type = "text/javascript";
+        document.body.appendChild(element);
     }
 
     onSend() {
@@ -27,17 +33,17 @@ export default class Contact extends React.Component {
         }
         else {
             request({
-                url: "api/contact", method: "POST", data, success: (res) => {
-                    if (res.error) {
-                        swal("Error", "Could not send message", "error");
-                    }
-                    else {
-                        swal(
-                            "Message Sent",
-                            "You should receive a reply within a day",
-                            "success"
-                        );
-                    }
+                url: "api/contact", method: "POST", data
+            }, (res) => {
+                if (res.error) {
+                    swal("Error", "Could not send message", "error");
+                }
+                else {
+                    swal(
+                        "Message Sent",
+                        "You should receive a reply within a day",
+                        "success"
+                    );
                 }
             });
         }
@@ -52,8 +58,6 @@ export default class Contact extends React.Component {
                     <br />
                     Please do not send the same message multiple times if you're not receiving a reply.
                 </p>
-
-                <hr />
 
                 <form className="contact" onSubmit={() => this.onSend()}>
                     <label>Regarding</label>
@@ -71,6 +75,7 @@ export default class Contact extends React.Component {
                         <option value="Support">Support</option>
                         <option value="Question">Question</option>
                         <option value="Feedback">Feedback</option>
+                        <option value="Bug Report">Bug Report</option>
                         <option value="Business Inquiry">Business Inquiry</option>
                     </select>
 
@@ -78,7 +83,7 @@ export default class Contact extends React.Component {
                     <span className="input-description">
                         The email that we'll send replies to.
                     </span>
-                    <input type="text" ref="email" placeholder="user@email.com" />
+                    <input type="text" ref="email" />
 
                     <label>Message</label>
                     <textarea ref="message" />
