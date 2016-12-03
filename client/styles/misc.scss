@@ -13,6 +13,10 @@ section.contact-us {
         height: 20em;
     }
 
+    p {
+        margin-bottom: 2em;
+    }
+
 }
 
 section.network {
@@ -52,6 +56,17 @@ section.documentation-list {
 
         }
 
+    }
+
+}
+
+.markdown {
+
+    text-align: left;
+    padding: 0em 5em;
+
+    p {
+        width: 100%;
     }
 
 }
