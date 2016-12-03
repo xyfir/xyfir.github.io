@@ -1,38 +1,66 @@
-export default function (options) {
+export default function() {
+
+    let options = {
+        url: "", fn: () => {}, method: "GET", dataType: "json",
+        form: {}, query: {}
+    };
+
+    // request("url", (res) => {})
+    if (typeof arguments[0] == "string") {
+        options.url = arguments[0];
+        options.fn = arguments[1];
+    }
+    // request({ url, success|fn, ?method, ?data, ?dataType })
+    else if (arguments.length == 1) {
+        Object.assign(options, arguments[0]);
+
+        // Old version used success() for callback
+        if (options.success) options.fn = options.success;
+    }
+    // request({ url, ?method, ?form, ?dataType }, (res) => {})
+    else {
+        Object.assign(options, arguments[0]);
+        options.fn = arguments[1];
+    }
+
+    // Old version used data{} for form data
+    if (options.data) options.form = options.data;
+    
     let request = new XMLHttpRequest();
+
+    // Build query string from object and append to url
+    if (Object.keys(options.query).length) {
+        options.url += "?" + Object.keys(options.query).map(q => {
+            return q + "=" + encodeURIComponent(options.query[q]);
+        }).join("&");
+    }
     
     // Set method and URL
-    request.open(options.method || "GET", options.url, true);
+    request.open(options.method, options.url, true);
     
     // Handle response
-    request.onload = function () {
+    request.onload = function() {
         if (this.status >= 200 && this.status < 400) {
             switch (options.dataType) {
                 case "text":
-                    options.success(this.responseText, this.status); break;
+                    options.fn(this.responseText, this.status); break;
                 default:
-                    options.success(JSON.parse(this.responseText), this.status);
+                    options.fn(JSON.parse(this.responseText), this.status);
             }
-        }
-        else if (options.error) {
-            options.error(this.responseText, this.status);
         }
     };
     
-    // Send request + data
-    if (options.method == undefined || options.method == "GET") {
+    // Send request + form
+    if (options.method == "GET") {
         request.send();
     }
     else {
-        let query = "";
-        
-        for (let key in options.data) {
-            query += encodeURIComponent(key) + "=" + encodeURIComponent(options.data[key]) + "&";
-        }
-        
-        query = query.substr(0, query.length - 1);
-        
-        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        request.send(query);
+        request.setRequestHeader(
+            "Content-Type", "application/x-www-form-urlencoded"
+        );
+        request.send(Object.keys(options.form).map(key => 
+            key + "=" + encodeURIComponent(options.form[key])
+        ).join("&"));
     }
+    
 };
