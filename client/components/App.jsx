@@ -48,7 +48,7 @@ class App extends React.Component {
                         <a href="#/contact">Contact</a>
                     </div>
                     
-                    <span className="title">Xyfir</span>
+                    <span className="title">{this.state.title}</span>
                     
                     <div className="right">
                         <a href="#/network">Network</a>
