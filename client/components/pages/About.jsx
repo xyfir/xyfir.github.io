@@ -10,7 +10,6 @@ export default class About extends React.Component {
         return (
             <section className="about">
                 <h2>About</h2>
-                <hr />
                 <p>
                     The Xyfir Network is operated by Xyfir, LLC. This website is a work in progress.
                 </p>

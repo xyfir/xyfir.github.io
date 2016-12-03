@@ -13,7 +13,7 @@ export default class Network extends React.Component {
         return (
             <section className="network">
                 <h2>Network</h2>
-                <hr />
+                
                 <div className="projects">{
                     Object.keys(projects).map(p => {
                         return (

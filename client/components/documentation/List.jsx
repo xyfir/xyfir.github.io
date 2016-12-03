@@ -14,8 +14,6 @@ export default class DocumentationList extends React.Component {
             <section className="documentation-list">
                 <h2>Documentation List</h2>
                 
-                <hr />
-                
                 <ul className="projects">{Object.keys(projects).map(p => {
                     const pO = projects[p];
 
@@ -45,8 +43,6 @@ export default class DocumentationList extends React.Component {
                 })}</ul>
 
                 <h2>Legal Documentation</h2>
-
-                <hr />
 
                 <ul className="projects">{Object.keys(projects).map(p => {
                     const pO = projects[p];

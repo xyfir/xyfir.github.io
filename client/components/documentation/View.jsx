@@ -63,8 +63,6 @@ export default class ViewDocumentation extends React.Component {
                     this.state.documentation.description
                 }</span>
 
-                <hr />
-
                 <DynamicIframe ref="frame" className="documentation" />
             </section>
         );
