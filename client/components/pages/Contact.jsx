@@ -1,4 +1,5 @@
 import React from "react";
+import Snackbar from "material-ui/Snackbar";
 
 // Constants
 import { RECAPTCHA_KEY } from "constants/config";
@@ -11,8 +12,10 @@ export default class Contact extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = { message: "" };
+
         // Load reCAPTCHA lib
-        let element = document.createElement("script");
+        const element = document.createElement("script");
         element.src = "https://www.google.com/recaptcha/api.js";
         element.type = "text/javascript";
         document.body.appendChild(element);
@@ -28,21 +31,19 @@ export default class Contact extends React.Component {
         };
 
         if (!data.recaptcha) {
-            swal("Error", "You must complete the captcha", "error");
+            this.setState({ message: "You must complete the captcha" });
         }
         else {
             request({
                 url: "api/contact", method: "POST", data
             }, (res) => {
                 if (res.error) {
-                    swal("Error", "Could not send message", "error");
+                    this.setState({ message: "Could not send message" });
                 }
                 else {
-                    swal(
-                        "Message Sent",
-                        "You should receive a reply within a day",
-                        "success"
-                    );
+                    this.setState({
+                        message: "You should receive a reply within a day"
+                    });
                 }
             });
         }
@@ -74,7 +75,6 @@ export default class Contact extends React.Component {
                     <select ref="tag" defaultValue="—">
                         <option value="-">-</option>
                         <option value="Support">Support</option>
-                        <option value="Question">Question</option>
                         <option value="Feedback">Feedback</option>
                         <option value="Bug Report">Bug Report</option>
                         <option value="Business Inquiry">Business Inquiry</option>
@@ -100,6 +100,13 @@ export default class Contact extends React.Component {
                 <button onClick={() => this.onSend()} className="btn-primary">
                     Send Message
                 </button>
+
+                <Snackbar
+                    open={!!this.state.message}
+                    message={this.state.message}
+                    autoHideDuration={5000}
+                    onRequestClose={() => this.setState({ message: "" })}
+                />
             </section>
         );
     }
