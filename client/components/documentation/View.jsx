@@ -1,9 +1,6 @@
 import marked from "marked";
 import React from "react";
 
-// Constants
-import projects from "constants/projects";
-
 // Modules
 import request from "lib/request";
 
@@ -14,15 +11,15 @@ export default class ViewDocumentation extends React.Component {
     constructor(props) {
         super(props);
 
-        const p = projects[this.props.hash.params.site];
+        const p = this.props.projects[this.props.params.project];
 
         // Validate that project and documentation file exist
         if (p === undefined) {
             location.hash = "/documentation";
         }
         else {
-            const d = p.documentation[this.props.hash.params.file]
-                || p.documentation.legal[this.props.hash.params.file];
+            const d = p.documentation[this.props.params.doc]
+                || p.documentation.legal[this.props.params.doc];
 
             if (d === undefined)
                 location.hash = "/documentation";
