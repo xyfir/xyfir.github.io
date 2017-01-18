@@ -32,10 +32,10 @@ export default class ViewDocumentation extends React.Component {
         const url = "https://api.github.com/repos/Xyfir/Documentation/contents/"
             + this.state.documentation.location + ".md";
 
-        request({url, success: (res) => {
+        request(url, (res) => {
             // Add CSS files
             this.refs.frame.refs.frame.contentDocument.head.innerHTML = `
-                <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
+                <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
                 <link rel="stylesheet" href="static/css/style.css">
             `;
 
@@ -47,7 +47,7 @@ export default class ViewDocumentation extends React.Component {
                     )
                 }</div>
             `;
-        }});
+        });
     }
 
     render() {
