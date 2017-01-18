@@ -44,23 +44,25 @@ gulp.task("client", function() {
     const extensions = [".jsx", ".js"];
     
     const b = browserify(
-        './client/components/App.jsx', {
+        "./client/components/App.jsx", {
             debug: true, extensions, paths: ["./client"]
         }
     );
     b.transform(babelify.configure({
-        extensions: extensions, presets: ["es2015", "react"]
+        extensions, presets: [
+            "es2017", "es2016", "es2015", "react"
+        ]
     }));
     
     return b.bundle()
-		.pipe(source('App.js'))
+		.pipe(source("App.js"))
         .pipe(streamify(uglify({
             mangle: false,
             compress: { unused: false }
         }))
-        .on('error', gutil.log))
+        .on("error", gutil.log))
 		.pipe(!isDev ? gzip() : gutil.noop())
-		.pipe(gulp.dest('./public/js/'));
+		.pipe(gulp.dest("./public/js/"));
 });
 
 /*
