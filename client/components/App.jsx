@@ -19,12 +19,18 @@ import Network from "components/pages/Network";
 import DocumentationList from "components/documentation/List";
 import DocumentationView from "components/documentation/View";
 
+// Material UI Components
+import MenuItem from "material-ui/MenuItem";
+import Drawer from "material-ui/Drawer";
+import AppBar from "material-ui/AppBar";
+
+
 class App extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { projects: {} };
+        this.state = { projects: {}, drawer: false };
     }
 
     componentWillMount() {
@@ -38,24 +44,52 @@ class App extends React.Component {
         });
     }
 
+    onCloseDrawer() {
+        this.setState({ drawer: false });
+    }
+
     render() {
         if (!Object.keys(this.state.projects).length) return <div />;
 
         return (
             <main className="app">
-                <nav className="nav-bar">
-                    <div className="left">
-                        <a href="#/about">About</a>
-                        <a href="#/contact">Contact</a>
-                    </div>
-                    
-                    <span className="title">Xyfir</span>
-                    
-                    <div className="right">
-                        <a href="#/network">Network</a>
-                        <a href="#/documentation">Documentation</a>
-                    </div>
-                </nav>
+                <AppBar
+                    title="Xyfir"
+                    className="app-bar"
+                    onTitleTouchTap={() => location.hash = "#/"}
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    onLeftIconButtonTouchTap={() =>
+                        this.setState({ drawer: true })
+                    }
+                />
+
+                <Drawer
+                    open={this.state.drawer}
+                    docked={false}
+                    className="drawer"
+                    onRequestChange={drawer => this.setState({ drawer })}
+                >
+                    <a href="#/network">
+                        <MenuItem onTouchTap={() => this.onCloseDrawer()}>
+                            Network
+                        </MenuItem>
+                    </a>
+                    <a href="#/contact">
+                        <MenuItem onTouchTap={() => this.onCloseDrawer()}>
+                            Contact
+                        </MenuItem>
+                    </a>
+                    <a href="#/documentation">
+                        <MenuItem onTouchTap={() => this.onCloseDrawer()}>
+                            Documentation
+                        </MenuItem>
+                    </a>
+                    <a href="#/about">
+                        <MenuItem onTouchTap={() => this.onCloseDrawer()}>
+                            About
+                        </MenuItem>
+                    </a>
+                </Drawer>
 
                 {React.cloneElement(this.props.children, {
                     projects: this.state.projects
