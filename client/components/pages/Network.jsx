@@ -1,8 +1,5 @@
 import React from "react";
 
-// Constants
-import projects from "constants/projects";
-
 export default class Network extends React.Component {
 
     constructor(props) {
@@ -10,6 +7,8 @@ export default class Network extends React.Component {
     }
 
     render() {
+        const projects = this.props.projects;
+
         return (
             <section className="network">
                 <h2>Network</h2>

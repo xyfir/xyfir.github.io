@@ -1,8 +1,5 @@
 import React from "react";
 
-// Constants
-import projects from "constants/projects";
-
 export default class DocumentationList extends React.Component {
 
     constructor(props) {
@@ -10,6 +7,8 @@ export default class DocumentationList extends React.Component {
     }
 
     render() {
+        const projects = this.props.projects;
+
         return (
             <section className="documentation-list">
                 <h2>Documentation List</h2>

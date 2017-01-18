@@ -2,7 +2,6 @@ import React from "react";
 
 // Constants
 import { RECAPTCHA_KEY } from "constants/config";
-import projects from "constants/projects";
 
 // Modules
 import request from "lib/request";
@@ -50,6 +49,8 @@ export default class Contact extends React.Component {
     }
 
     render() {
+        const projects = this.props.projects;
+
         return (
             <section className="contact-us">
                 <h2>Contact Us</h2>
