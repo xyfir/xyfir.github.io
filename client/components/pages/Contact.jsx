@@ -1,4 +1,10 @@
 import React from "react";
+
+// MUI Components
+import RaisedButton from "material-ui/RaisedButton";
+import SelectField from "material-ui/SelectField";
+import TextField from "material-ui/TextField";
+import MenuItem from "material-ui/MenuItem";
 import Snackbar from "material-ui/Snackbar";
 
 // Constants
@@ -21,13 +27,17 @@ export default class Contact extends React.Component {
         document.body.appendChild(element);
     }
 
+    onSetValue(prop, val) {
+        this.setState({ [prop]: val });
+    }
+
     onSend() {
         const data = {
-            regarding: this.refs.regarding.value,
+            regarding: this.state.regarding,
             recaptcha: grecaptcha.getResponse(),
-            message: this.refs.message.value,
-            email: this.refs.email.value,
-            tag: this.refs.tag.value
+            message: this.refs.message.getValue(),
+            email: this.refs.email.getValue(),
+            tag: this.state.tag
         };
 
         if (!data.recaptcha) {
@@ -57,49 +67,68 @@ export default class Contact extends React.Component {
                 <h2>Contact Us</h2>
                 <p>
                     Enter in your message below and we'll do our best to reply within a day.
-                    <br />
-                    Please do not send the same message multiple times if you're not receiving a reply.
                 </p>
 
-                <form className="contact" onSubmit={() => this.onSend()}>
-                    <label>Regarding</label>
-                    <select ref="regarding" defaultValue="—">
-                        <option value="-">-</option>
-                        {Object.keys(projects).map(p => {
-                            const t = projects[p].name;
-                            return <option value={t}>{t}</option>;
-                        })}
-                    </select>
+                <SelectField
+                    value={this.state.regarding}
+                    onChange={(e, i, v) => this.onSetValue("regarding", v)}
+                    className="select"
+                    floatingLabelText="Regarding Project"
+                >
+                    <MenuItem value="N/A" primaryText="N/A" />
+                    {Object.keys(projects).map(p => {
+                        const t = projects[p].name;
+                        return <MenuItem value={t} primaryText={t} />;
+                    })}
+                </SelectField>
 
-                    <label>Tag</label>
-                    <select ref="tag" defaultValue="—">
-                        <option value="-">-</option>
-                        <option value="Support">Support</option>
-                        <option value="Feedback">Feedback</option>
-                        <option value="Bug Report">Bug Report</option>
-                        <option value="Business Inquiry">Business Inquiry</option>
-                    </select>
+                <br />
 
-                    <label>Email</label>
-                    <span className="input-description">
-                        The email that we'll send replies to.
-                    </span>
-                    <input type="text" ref="email" />
+                <SelectField
+                    value={this.state.tag}
+                    onChange={(e, i, v) => this.onSetValue("tag", v)}
+                    className="select"
+                    floatingLabelText="Tag"
+                >
+                    <MenuItem value="Other" primaryText="Other" />
+                    <MenuItem value="Support" primaryText="Support" />
+                    <MenuItem value="Feedback" primaryText="Feedback" />
+                    <MenuItem value="Bug Report" primaryText="Bug Report" />
+                    <MenuItem
+                        value="Business Inquiry"
+                        primaryText="Business Inquiry"
+                    />
+                </SelectField>
 
-                    <label>Message</label>
-                    <textarea ref="message" />
+                <br />
 
-                    <div className="recaptcha-wrapper">
-                        <div
-                            className="g-recaptcha"
-                            data-sitekey={RECAPTCHA_KEY}
-                        />
-                    </div>
-                </form>
-                
-                <button onClick={() => this.onSend()} className="btn-primary">
-                    Send Message
-                </button>
+                <TextField
+                    ref="email"
+                    type="email"
+                    floatingLabelText="Email"
+                /><br />
+
+                <TextField
+                    floatingLabelText="Message"
+                    multiLine={true}
+                    rowsMax={7}
+                    rows={7}
+                    ref="message"
+                />
+
+                <div className="recaptcha-wrapper">
+                    <div
+                        className="g-recaptcha"
+                        data-sitekey={RECAPTCHA_KEY}
+                    />
+                </div>
+
+                <RaisedButton
+                    label="Send Message"
+                    primary={true}
+                    className="button raised primary"
+                    onTouchTap={() => this.onSend()}
+                />
 
                 <Snackbar
                     open={!!this.state.message}
