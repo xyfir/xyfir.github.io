@@ -1,3 +1,24 @@
+/* OVERRIDE MATERIAL-UI STYLES */
+.drawer span {
+    color: $blue !important;
+}
+
+.app-bar, .tabs button {
+    background-color: $blue !important;
+}
+
+.tabs > div:nth-child(2) > div {
+    background-color: $lblue !important;
+}
+
+div.button.primary > button {
+    background-color: $blue !important;
+}
+
+div.select > div > div:nth-child(1) > div:nth-child(2) {
+    text-align: left;
+}
+
 section.contact-us {
 
     .g-recaptcha {
@@ -45,6 +66,7 @@ section.documentation-list {
         width: 50%;
         margin: auto;
         text-align: left;
+        margin-top: 1em;
 
         li.documentation-item {
 
