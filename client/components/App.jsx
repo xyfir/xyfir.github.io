@@ -56,7 +56,6 @@ class App extends React.Component {
                 <AppBar
                     title="Xyfir"
                     className="app-bar"
-                    onTitleTouchTap={() => location.hash = "#/"}
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     onLeftIconButtonTouchTap={() =>
                         this.setState({ drawer: true })
@@ -69,6 +68,13 @@ class App extends React.Component {
                     className="drawer"
                     onRequestChange={drawer => this.setState({ drawer })}
                 >
+                    <AppBar
+                        className="app-bar"
+                        onLeftIconButtonTouchTap={() =>
+                            this.setState({ drawer: false })
+                        }
+                    />
+
                     <a href="#/network">
                         <MenuItem onTouchTap={() => this.onCloseDrawer()}>
                             Network
