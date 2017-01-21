@@ -4,12 +4,12 @@ body {
 	font-family: "Roboto", sans-serif;
     text-align: center;
 	margin: 0;
+	margin-bottom: 1em;
 }
 p {
 	width: 80%;
 	margin: auto;
 }
-
 
 /* LINKS */
 a {
@@ -22,41 +22,4 @@ a:hover, a:focus {
 }
 .link-lg {
 	font-size: 125%;
-}
-
-
-/* FORMS */
-input, select {
-	font-size: 100%;
-}
-input[type=text], input[type=number], input[type=search] {
-    text-align: center;
-	height: 1.571em;
-	width: 16em;
-}
-input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus, input[type=search]:focus {
-	border-color: $gray;
-	outline: none;
-}
-input[type=text], input[type=number], input[type=search], textarea, select {
-	padding: 4px 8px;
-	color: $lblack;
-	border: 1px solid $llgray;
-	background-color: rgba(255,255,255,.8);
-	display: block;
-	margin: 1em auto;
-}
-label {
-    display: block;
-    font-weight: bold;
-}
-.input-description {
-    font-size: 90%;
-    color: $dgray;
-    display: block;
-    width: 80%;
-    margin: auto;
-}
-input[type=checkbox] {
-    margin-bottom: 1em;
 }
