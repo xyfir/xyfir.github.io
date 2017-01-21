@@ -76,7 +76,6 @@ export default class Contact extends React.Component {
 
                 <form onSubmit={(e) => this.onSend(e)}>
                     <SelectField
-                        required
                         id="select-regarding"
                         label="Regarding Project"
                         value={this.state.regarding}
@@ -93,7 +92,6 @@ export default class Contact extends React.Component {
                     <br />
 
                     <SelectField
-                        required
                         id="select-tag"
                         label="Tag"
                         value={this.state.tag}
@@ -108,7 +106,6 @@ export default class Contact extends React.Component {
                     <br />
 
                     <TextField
-                        required
                         id="text-email"
                         ref="email"
                         type="email"
@@ -119,7 +116,6 @@ export default class Contact extends React.Component {
                     <br />
 
                     <TextField
-                        required
                         id="text-message"
                         ref="message"
                         rows={7}
