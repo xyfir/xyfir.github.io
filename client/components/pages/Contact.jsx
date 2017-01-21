@@ -1,11 +1,10 @@
 import React from "react";
 
-// MUI Components
-import RaisedButton from "material-ui/RaisedButton";
-import SelectField from "material-ui/SelectField";
-import TextField from "material-ui/TextField";
-import MenuItem from "material-ui/MenuItem";
-import Snackbar from "material-ui/Snackbar";
+// react-md
+import SelectField from "react-md/lib/SelectFields";
+import TextField from "react-md/lib/TextFields";
+import Snackbar from "react-md/lib/Snackbars";
+import Button from "react-md/lib/Buttons/Button";
 
 // Constants
 import { RECAPTCHA_KEY } from "constants/config";
@@ -18,7 +17,7 @@ export default class Contact extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { message: "" };
+        this.state = { message: "", toasts: [] };
 
         // Load reCAPTCHA lib
         const element = document.createElement("script");
@@ -31,29 +30,35 @@ export default class Contact extends React.Component {
         this.setState({ [prop]: val });
     }
 
-    onSend() {
+    onSend(e) {
+        e && e.preventDefault();
+
         const data = {
             regarding: this.state.regarding,
             recaptcha: grecaptcha.getResponse(),
-            message: this.refs.message.getValue(),
-            email: this.refs.email.getValue(),
+            message: this.refs.message.getField().value,
+            email: this.refs.email.getField().value,
             tag: this.state.tag
         };
 
         if (!data.recaptcha) {
-            this.setState({ message: "You must complete the captcha" });
+            this.setState({ toasts: [{
+                text: "You must complete the captcha"
+            }]});
         }
         else {
             request({
                 url: "api/contact", method: "POST", data
             }, (res) => {
                 if (res.error) {
-                    this.setState({ message: "Could not send message" });
+                    this.setState({ toasts: [{
+                        text: "Could not send message"
+                    }]});
                 }
                 else {
-                    this.setState({
-                        message: "You should receive a reply within a day"
-                    });
+                    this.setState({ toasts: [{
+                        text: "You should receive a reply within a day"
+                    }]});
                 }
             });
         }
@@ -69,72 +74,77 @@ export default class Contact extends React.Component {
                     Enter in your message below and we'll do our best to reply within a day.
                 </p>
 
-                <SelectField
-                    value={this.state.regarding}
-                    onChange={(e, i, v) => this.onSetValue("regarding", v)}
-                    className="select"
-                    floatingLabelText="Regarding Project"
-                >
-                    <MenuItem value="N/A" primaryText="N/A" />
-                    {Object.keys(projects).map(p => {
-                        const t = projects[p].name;
-                        return <MenuItem value={t} primaryText={t} />;
-                    })}
-                </SelectField>
-
-                <br />
-
-                <SelectField
-                    value={this.state.tag}
-                    onChange={(e, i, v) => this.onSetValue("tag", v)}
-                    className="select"
-                    floatingLabelText="Tag"
-                >
-                    <MenuItem value="Other" primaryText="Other" />
-                    <MenuItem value="Support" primaryText="Support" />
-                    <MenuItem value="Feedback" primaryText="Feedback" />
-                    <MenuItem value="Bug Report" primaryText="Bug Report" />
-                    <MenuItem
-                        value="Business Inquiry"
-                        primaryText="Business Inquiry"
+                <form onSubmit={(e) => this.onSend(e)}>
+                    <SelectField
+                        required
+                        id="select-regarding"
+                        label="Regarding Project"
+                        value={this.state.regarding}
+                        menuItems={
+                            ["N/A"].concat(
+                                Object.keys(projects).map(p => projects[p].name)
+                            )
+                        }
+                        onChange={v => this.onSetValue("regarding", v)}
+                        className="md-cell"
+                        placeholder="N/A"
                     />
-                </SelectField>
 
-                <br />
+                    <br />
 
-                <TextField
-                    ref="email"
-                    type="email"
-                    floatingLabelText="Email"
-                /><br />
-
-                <TextField
-                    floatingLabelText="Message"
-                    multiLine={true}
-                    rowsMax={7}
-                    rows={7}
-                    ref="message"
-                />
-
-                <div className="recaptcha-wrapper">
-                    <div
-                        className="g-recaptcha"
-                        data-sitekey={RECAPTCHA_KEY}
+                    <SelectField
+                        required
+                        id="select-tag"
+                        label="Tag"
+                        value={this.state.tag}
+                        menuItems={[
+                            "Other", "Support", "Feedback", "Bug Report",
+                            "Business Inquiry"
+                        ]}
+                        onChange={v => this.onSetValue("tag", v)}
+                        className="md-cell"
                     />
-                </div>
 
-                <RaisedButton
-                    label="Send Message"
-                    primary={true}
-                    className="button raised primary"
-                    onTouchTap={() => this.onSend()}
-                />
+                    <br />
+
+                    <TextField
+                        required
+                        id="text-email"
+                        ref="email"
+                        type="email"
+                        label="Email"
+                        className="md-cell"
+                    />
+
+                    <br />
+
+                    <TextField
+                        required
+                        id="text-message"
+                        ref="message"
+                        rows={7}
+                        type="text"
+                        label="Message"
+                        className="md-cell"
+                    />
+
+                    <div className="recaptcha-wrapper">
+                        <div
+                            className="g-recaptcha"
+                            data-sitekey={RECAPTCHA_KEY}
+                        />
+                    </div>
+
+                    <Button
+                        raised primary
+                        onClick={() => this.onSend()}
+                        label="Send Message"
+                    />
+                </form>
 
                 <Snackbar
-                    open={!!this.state.message}
-                    message={this.state.message}
-                    autoHideDuration={5000}
-                    onRequestClose={() => this.setState({ message: "" })}
+                    toasts={this.state.toasts}
+                    onDismiss={() => this.setState({ toasts: [] })}
                 />
             </section>
         );

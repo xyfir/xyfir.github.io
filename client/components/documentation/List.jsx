@@ -1,12 +1,16 @@
 import React from "react";
 
-// MUI Components
-import { Tabs, Tab } from "material-ui/Tabs";
+// react-md
+import Tabs from "react-md/lib/Tabs/Tabs";
+import Tab from "react-md/lib/Tabs/Tab";
+import TabsContainer from "react-md/lib/Tabs/TabsContainer";
 
 export default class DocumentationList extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = { tab: 0 };
     }
 
     renderDocs(projects) {
@@ -65,7 +69,13 @@ export default class DocumentationList extends React.Component {
     render() {
         return (
             <section className="documentation-list">
-                <Tabs className="tabs">
+            <TabsContainer
+                colored
+                onTabChange={tab => this.setState({ tab })}
+                panelClassName="md-grid"
+                activeTabIndex={this.state.tab}
+            >
+                <Tabs tabId="tab" className="tabs">
                     <Tab label="Documentation">
                         <ul className="projects">{
                             this.renderDocs(this.props.projects)
@@ -78,6 +88,7 @@ export default class DocumentationList extends React.Component {
                         }</ul>
                     </Tab>
                 </Tabs>
+            </TabsContainer>
             </section>
         );
     }
