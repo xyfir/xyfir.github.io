@@ -1,10 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import injectTapEventPlugin from "react-tap-event-plugin";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
-
-injectTapEventPlugin();
 
 // Modules
 import request from "lib/request";
@@ -19,10 +15,11 @@ import Network from "components/pages/Network";
 import DocumentationList from "components/documentation/List";
 import DocumentationView from "components/documentation/View";
 
-// Material UI Components
-import MenuItem from "material-ui/MenuItem";
-import Drawer from "material-ui/Drawer";
-import AppBar from "material-ui/AppBar";
+// react-md
+import ListItem from "react-md/lib/Lists/ListItem";
+import Toolbar from "react-md/lib/Toolbars";
+import Drawer from "react-md/lib/Drawers";
+import Button from "react-md/lib/Buttons/Button";
 
 
 class App extends React.Component {
@@ -53,49 +50,57 @@ class App extends React.Component {
 
         return (
             <main className="app">
-                <AppBar
+                <Toolbar
+                    colored
+                    className="toolbar"
                     title="Xyfir"
-                    className="app-bar"
-                    iconClassNameRight="muidocs-icon-navigation-expand-more"
-                    onLeftIconButtonTouchTap={() =>
-                        this.setState({ drawer: true })
+                    nav={
+                        <Button
+                            icon
+                            onClick={() =>
+                                this.setState({ drawer: true })
+                            }
+                        >menu</Button>
                     }
                 />
 
                 <Drawer
-                    open={this.state.drawer}
-                    docked={false}
-                    className="drawer"
-                    onRequestChange={drawer => this.setState({ drawer })}
-                >
-                    <AppBar
-                        className="app-bar"
-                        onLeftIconButtonTouchTap={() =>
-                            this.setState({ drawer: false })
-                        }
-                    />
-
-                    <a href="#/network">
-                        <MenuItem onTouchTap={() => this.onCloseDrawer()}>
-                            Network
-                        </MenuItem>
-                    </a>
-                    <a href="#/contact">
-                        <MenuItem onTouchTap={() => this.onCloseDrawer()}>
-                            Contact
-                        </MenuItem>
-                    </a>
-                    <a href="#/documentation">
-                        <MenuItem onTouchTap={() => this.onCloseDrawer()}>
-                            Documentation
-                        </MenuItem>
-                    </a>
-                    <a href="#/about">
-                        <MenuItem onTouchTap={() => this.onCloseDrawer()}>
-                            About
-                        </MenuItem>
-                    </a>
-                </Drawer>
+                    onVisibilityToggle={
+                        v => this.setState({ drawer: v })
+                    }
+                    className="toolbar"
+                    autoclose={true}
+                    navItems={[
+                        <a href="#/network">
+                            <ListItem primaryText="Network" />
+                        </a>,
+                        <a href="#/contact">
+                            <ListItem primaryText="Contact" />
+                        </a>,
+                        <a href="#/about">
+                            <ListItem primaryText="About Us" />
+                        </a>,
+                        <a href="#/documentation">
+                            <ListItem primaryText="Documentation" />
+                        </a>
+                    ]}
+                    visible={this.state.drawer}
+                    header={
+                        <Toolbar
+                            className="md-divider-border md-divider-border--bottom"
+                            colored
+                            nav={
+                                <Button
+                                    icon
+                                    onClick={() =>
+                                        this.setState({ drawer: false })
+                                    }
+                                >arrow_back</Button>
+                            }
+                        />
+                    }
+                    type={Drawer.DrawerTypes.TEMPORARY}
+                />
 
                 {React.cloneElement(this.props.children, {
                     projects: this.state.projects
@@ -107,21 +112,19 @@ class App extends React.Component {
 }
 
 render((
-    <MuiThemeProvider>
-        <Router history={hashHistory}>
-            <Route path="/" component={App}>
-                <IndexRoute component={Network} />
-                
-                <Route path="about" component={About} />
-                <Route path="network" component={Network} />
-                <Route path="contact" component={Contact} />
-                
-                <Route path="documentation" component={DocumentationList} />
-                <Route
-                    path="documentation/:project/:doc"
-                    component={DocumentationView}
-                />
-            </Route>
-        </Router>
-    </MuiThemeProvider>
+    <Router history={hashHistory}>
+        <Route path="/" component={App}>
+            <IndexRoute component={Network} />
+            
+            <Route path="about" component={About} />
+            <Route path="network" component={Network} />
+            <Route path="contact" component={Contact} />
+            
+            <Route path="documentation" component={DocumentationList} />
+            <Route
+                path="documentation/:project/:doc"
+                component={DocumentationView}
+            />
+        </Route>
+    </Router>
 ), document.querySelector("#content"));
