@@ -19,9 +19,11 @@
     "express": "^4.14.0",
     "mailgun-js": "^0.8.0",
     "marked": "^0.3.6",
-    "material-ui": "^0.16.7",
     "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
+    "react-addons-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-md": "^1.0.1",
     "react-router": "^3.0.1",
     "react-tap-event-plugin": "^2.0.1",
     "request": "^2.79.0"
