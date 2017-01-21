@@ -2,11 +2,6 @@ const gutil = require("gulp-util");
 const gzip = require("gulp-gzip");
 const gulp = require("gulp");
 
-const postcss = require("gulp-postcss");
-const precss = require("precss");
-const nano = require("cssnano");
-const ap = require("autoprefixer");
-
 const isDev = require("./config").environment.type == "dev";
 
 /*
@@ -17,7 +12,12 @@ const isDev = require("./config").environment.type == "dev";
 	- minifies / gzip
 */
 gulp.task("css", function() {
-    return gulp.src("./client/styles/style.css")
+    const postcss = require("gulp-postcss");
+    const precss = require("precss");
+    const nano = require("cssnano");
+    const ap = require("autoprefixer");
+
+    return gulp.src("./client/styles/style.scss")
         .pipe(postcss([
             precss({}),
             ap({browsers: "last 1 version, > 10%"}),
