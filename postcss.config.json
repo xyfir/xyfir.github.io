@@ -1,0 +1,9 @@
+{
+  "autoprefixer": {
+    "browsers": "last 1 version, > 10%"
+  },
+  "cssnano": {
+    "autoprefixer": false,
+    "zindex": false
+  }
+}
