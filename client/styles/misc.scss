@@ -1,11 +1,12 @@
 section.contact-us {
 
-    .g-recaptcha {
-        display: inline-block;
-    }
-
     .recaptcha-wrapper {
         text-align: center;
+        margin: 2em auto;
+
+        .g-recaptcha {
+            display: inline-block;
+        }
     }
 
     p {
