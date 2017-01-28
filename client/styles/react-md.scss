@@ -1,0 +1,18 @@
+@import "node_modules/react-md/src/scss/_react-md.scss";
+
+$md-primary-color: $md-blue-500;
+$md-secondary-color: $md-light-blue-a-400;
+
+@include react-md-everything;
+
+form.md-grid {
+    flex-direction: column;
+
+    .md-cell, button {
+        margin: auto;
+    }
+
+    .md-floating-label {
+        display: block;
+    }
+}
