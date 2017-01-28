@@ -74,7 +74,7 @@ export default class Contact extends React.Component {
                     Enter in your message below and we'll do our best to reply within a day.
                 </p>
 
-                <form onSubmit={(e) => this.onSend(e)}>
+                <form onSubmit={(e) => this.onSend(e)} className="md-grid">
                     <SelectField
                         id="select-regarding"
                         label="Regarding Project"
@@ -118,10 +118,11 @@ export default class Contact extends React.Component {
                     <TextField
                         id="text-message"
                         ref="message"
-                        rows={7}
+                        rows={10}
                         type="text"
                         label="Message"
                         className="md-cell"
+                        lineDirection="right"
                     />
 
                     <div className="recaptcha-wrapper">
