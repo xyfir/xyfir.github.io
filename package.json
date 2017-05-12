@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build:client": "webpack --colors",
-    "build:css": "node-sass --output-style compressed client/styles/style.scss public/css/style.css"
+    "wp": "webpack --colors"
   },
   "repository": {
     "type": "git",
@@ -18,24 +17,25 @@
     "app-module-path": "^2.2.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "mailgun-js": "^0.9.1",
+    "mailgun-js": "^0.10.1",
     "marked": "^0.3.6",
-    "react": "^15.4.2",
-    "react-addons-css-transition-group": "^15.5.0",
-    "react-addons-transition-group": "^15.5.0",
-    "react-dom": "^15.4.2",
-    "react-md": "^1.0.11",
-    "react-router": "^3.0.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-md": "^1.0.13",
+    "react-router": "^3.0.5",
     "request": "^2.81.0"
   },
   "devDependencies": {
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-preset-es2015": "^6.24.0",
-    "babel-preset-es2016": "^6.22.0",
-    "babel-preset-es2017": "^6.22.0",
-    "babel-preset-react": "^6.23.0",
-    "node-sass": "^4.5.2",
-    "webpack": "^2.3.3"
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-favicons": "^2.2.7",
+    "gulp-sass": "^3.1.0",
+    "gulp-util": "^3.0.8",
+    "webpack": "^2.5.1"
   }
 }
