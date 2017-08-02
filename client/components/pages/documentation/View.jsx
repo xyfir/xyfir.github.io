@@ -9,15 +9,15 @@ export default class ViewDocumentation extends React.Component {
   constructor(props) {
     super(props);
 
-    const p = this.props.projects[this.props.params.project];
+    const p = this.props.projects[this.props.project];
 
     // Validate that project and documentation file exist
     if (p === undefined) {
       location.hash = '#/documentation';
     }
     else {
-      const d = p.documentation[this.props.params.doc] ||
-        p.documentation.legal[this.props.params.doc];
+      const d = p.documentation[this.props.doc] ||
+        p.documentation.legal[this.props.doc];
 
       if (d === undefined)
         location.hash = '#/documentation';

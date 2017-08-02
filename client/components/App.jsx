@@ -1,11 +1,9 @@
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { render } from 'react-dom';
 import request from 'superagent';
 import React from 'react';
 
 // Components
-import DocumentationList from 'components/documentation/List';
-import DocumentationView from 'components/documentation/View';
+import Documentation from 'components/pages/documentation/Documentation';
 import Advertise from 'components/pages/Advertise';
 import Contact from 'components/pages/Contact';
 import Network from 'components/pages/Network';
@@ -27,6 +25,8 @@ class App extends React.Component {
     this.state = { projects: {}, drawer: false, toasts: [] };
 
     this._alert = this._alert.bind(this);
+
+    window.onhashchange = () => this.forceUpdate();
   }
 
   componentWillMount() {
@@ -59,7 +59,27 @@ class App extends React.Component {
   }
 
   render() {
-    if (!Object.keys(this.state.projects).length) return null;
+    if (!Object.keys(this.state.projects).length) return <div />;
+
+    const props = {
+      projects: this.state.projects,
+      alert: this._alert
+    },
+    view = (() => {
+      switch (location.hash.split('/')[1]) {
+        case 'documentation':
+          return <Documentation {...props} />
+        case 'advertise':
+          return <Advertise {...props} />
+        case 'contact':
+          return <Contact {...props} />
+        case 'about':
+          return <About {...props} />
+        case 'network':
+        default:
+          return <Network {...props} />
+      }
+    })();
 
     return (
       <main className='app'>
@@ -112,10 +132,7 @@ class App extends React.Component {
           type={Drawer.DrawerTypes.TEMPORARY}
         />
 
-        {React.cloneElement(this.props.children, {
-          projects: this.state.projects,
-          alert: this._alert
-        })}
+        {view}
 
         <Snackbar
           toasts={this.state.toasts}
@@ -127,21 +144,4 @@ class App extends React.Component {
 
 }
 
-render((
-  <Router history={hashHistory}>
-    <Route path='/' component={App}>
-      <IndexRoute component={Network} />
-      
-      <Route path='about' component={About} />
-      <Route path='network' component={Network} />
-      <Route path='contact' component={Contact} />
-      <Route path='advertise' component={Advertise} />
-      
-      <Route path='documentation' component={DocumentationList} />
-      <Route
-        path='documentation/:project/:doc'
-        component={DocumentationView}
-      />
-    </Route>
-  </Router>
-), document.querySelector('#content'));
+render(<App />, document.querySelector('#content'));
