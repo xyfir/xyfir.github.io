@@ -1,10 +1,5 @@
-const request = require('superagent');
-const config = require('config');
-
-const mailgun = require('mailgun-js')({
-  apiKey: config.keys.mailgun,
-  domain: config.addresses.mailgun.domain
-});
+const validateCaptcha = require('lib/validate-captcha');
+const sendEmail = require('lib/send-email');
 
 /*
   POST api/contact
@@ -22,25 +17,12 @@ module.exports = async function(req, res) {
   const b = req.body;
 
   try {
-    // Check if reCaptcha response is valid
-    const result = await request
-      .post('https://www.google.com/recaptcha/api/siteverify')
-      .type('form')
-      .send({
-        secret: config.keys.recaptcha,
-        response: b.recaptcha,
-        remoteip: req.ip
-      });
+    await validateCaptcha(req.body.recaptcha, req.ip);
     
-    if (!result.body.success) throw 'Invalid captcha';
-    
-    // Email contact@xyfir.com with user's message'
-    await mailgun.messages().send({
-      to: 'contact@xyfir.com',
-      from: 'contact@xyfir.com',
-      text: b.message,
-      subject: `${b.regarding} | ${b.tag} | ${b.email}`
-    });
+    await sendEmail(
+      `${b.regarding} | ${b.tag} | ${b.email}`,
+      b.message
+    );
 
     res.json({ error: false });
   }
