@@ -4,11 +4,12 @@ const gulp = require('gulp');
 gulp.task('css', () => {
   const sass = require('gulp-sass');
   
-  return gulp.src('./client/styles/style.css')
+  return gulp.src('./client/styles/style.scss')
     .pipe(
-      sass({ outputStyle: 'compressed' }).on('error', sass.logError)
+      sass({ outputStyle: 'compressed' })
+        .on('error', sass.logError)
     )
-    .pipe(gulp.dest('./public/css'))
+    .pipe(gulp.dest('./static/css'))
 });
 
 gulp.task('favicons', () => {
@@ -17,5 +18,5 @@ gulp.task('favicons', () => {
   return gulp.src('icon.png')
     .pipe(favicons({}))
     .on('error', gutil.log)
-    .pipe(gulp.dest('./public/icons/'));
+    .pipe(gulp.dest('./static/icons/'));
 });
