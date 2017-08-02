@@ -17,12 +17,12 @@
     "app-module-path": "^2.2.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "mailgun-js": "^0.11.3",
+    "github-markdown-css": "^2.8.0",
+    "mailgun-js": "^0.12.0",
     "marked": "^0.3.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-md": "^1.0.17",
-    "react-router": "^3.0.5",
+    "react-md": "^1.0.18",
     "request": "^2.81.0",
     "superagent": "^3.5.2"
   },
@@ -37,6 +37,6 @@
     "gulp-favicons": "^2.2.7",
     "gulp-sass": "^3.1.0",
     "gulp-util": "^3.0.8",
-    "webpack": "^3.3.0"
+    "webpack": "^3.4.1"
   }
 }
