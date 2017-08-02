@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/xyfir/xyfir.com.git"
+    "url": "https://github.com/Xyfir/xyfir.com"
   },
   "author": "Xyfir",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/xyfir/xyfir#readme",
+  "license": "MIT",
+  "homepage": "https://github.com/Xyfir/xyfir.com#readme",
   "dependencies": {
     "app-module-path": "^2.2.0",
     "body-parser": "^1.17.2",
