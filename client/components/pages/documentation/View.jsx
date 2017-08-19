@@ -2,8 +2,6 @@ import request from 'superagent';
 import marked from 'marked';
 import React from 'react';
 
-import DynamicIframe from 'components/misc/DynamicIframe';
-
 export default class ViewDocumentation extends React.Component {
 
   constructor(props) {
@@ -22,7 +20,7 @@ export default class ViewDocumentation extends React.Component {
       if (d === undefined)
         location.hash = '#/documentation';
       else
-        this.state = { project: p, documentation: d };
+        this.state = { project: p, documentation: d, file: '' };
     }
   }
 
@@ -32,17 +30,7 @@ export default class ViewDocumentation extends React.Component {
         'https://raw.githubusercontent.com/Xyfir/Documentation/master/' +
         this.state.documentation.location + '.md'
       )
-      .end((err, res) => {
-        // Add CSS files
-        this.refs.frame.refs.frame.contentDocument.head.innerHTML = `
-          <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
-          <link rel='stylesheet' href='static/css/style.css'>
-        `;
-
-        // Convert markdown to html
-        this.refs.frame.refs.frame.contentDocument.body.innerHTML =
-          `<div class='markdown-body'>${marked(res.text, { santize: true })}</div>`;
-      });
+      .end((err, res) => this.setState({ file: res.text }));
   }
 
   render() {
@@ -55,7 +43,12 @@ export default class ViewDocumentation extends React.Component {
           this.state.documentation.description
         }</span>
 
-        <DynamicIframe ref='frame' className='documentation' />
+        <div
+          className='documentation markdown-body'
+          dangerouslySetInnerHTML={{__html:
+            marked(this.state.file, { santize: true })
+          }}
+        />
       </section>
     );
   }
