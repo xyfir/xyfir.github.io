@@ -22,9 +22,10 @@
     "marked": "^0.3.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-md": "^1.0.18",
+    "react-md": "^1.0.19",
     "request": "^2.81.0",
-    "superagent": "^3.5.2"
+    "superagent": "^3.6.0",
+    "xyfir-ads": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
