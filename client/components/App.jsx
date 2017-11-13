@@ -3,6 +3,7 @@ import request from 'superagent';
 import React from 'react';
 
 // Components
+import XyfirMarketForm from 'components/pages/XyfirMarketForm';
 import Documentation from 'components/pages/documentation/Documentation';
 import Advertise from 'components/pages/Advertise';
 import Contact from 'components/pages/Contact';
@@ -67,14 +68,11 @@ class App extends React.Component {
     },
     view = (() => {
       switch (location.hash.split('/')[1]) {
-        case 'documentation':
-          return <Documentation {...props} />
-        case 'advertise':
-          return <Advertise {...props} />
-        case 'contact':
-          return <Contact {...props} />
-        case 'about':
-          return <About {...props} />
+        case 'documentation': return <Documentation {...props} />
+        case 'advertise': return <Advertise {...props} />
+        case 'contact': return <Contact {...props} />
+        case 'market': return <XyfirMarketForm {...props} />
+        case 'about': return <About {...props} />
         case 'network':
         default:
           return <Network {...props} />
@@ -91,12 +89,13 @@ class App extends React.Component {
             <Button
               icon
               onClick={() => this.setState({ drawer: true })}
-            >menu</Button>
+              iconChildren='menu'
+            />
           }
         />
 
         <Drawer
-          onVisibilityToggle={v => this.setState({ drawer: v })}
+          onVisibilityChange={v => this.setState({ drawer: v })}
           className='toolbar'
           autoclose={true}
           navItems={[
@@ -125,7 +124,8 @@ class App extends React.Component {
                 <Button
                   icon
                   onClick={() => this.setState({ drawer: false })}
-                >arrow_back</Button>
+                  iconChildren='arrow_back'
+                />
               }
             />
           }
