@@ -1,5 +1,27 @@
+const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
+const config = require('./config');
 const path = require('path');
+
+const plugins = [];
+const isProd = config.environment.type == 'prod';
+
+if (isProd) {
+  plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: false,
+      compress: { unused: false }
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz'
+    })
+  );
+}
 
 module.exports = {
   
@@ -13,7 +35,7 @@ module.exports = {
   resolve: {
     modules: [
       path.resolve(__dirname, 'client'),
-      "node_modules"
+      'node_modules'
     ],
     extensions: ['.js', '.jsx']
   },
@@ -24,21 +46,15 @@ module.exports = {
       loader: 'babel-loader',
       include: [
         path.resolve(__dirname, 'client/components'),
-        path.resolve(__dirname, 'client/constants'),
-        path.resolve(__dirname, 'client/lib')
+        path.resolve(__dirname, 'client/constants')
       ],
       exclude: /node_modules/,
       options: {
-        presets: ['es2017', 'es2016', 'es2015', 'react']
+        presets: ['env', 'react']
       }
     }]
   },
 
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: false,
-      compress: { unused: false }
-    })
-  ]
+  plugins
 
 };
