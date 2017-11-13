@@ -1,11 +1,8 @@
 {
   "name": "xyfir.com",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "",
   "main": "app.js",
-  "scripts": {
-    "wp": "webpack --colors"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Xyfir/xyfir.com"
@@ -15,29 +12,27 @@
   "homepage": "https://github.com/Xyfir/xyfir.com#readme",
   "dependencies": {
     "app-module-path": "^2.2.0",
-    "body-parser": "^1.17.2",
-    "express": "^4.15.4",
-    "github-markdown-css": "^2.8.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "github-markdown-css": "^2.9.0",
     "mailgun-js": "^0.13.1",
     "marked": "^0.3.6",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-md": "^1.0.19",
-    "request": "^2.81.0",
-    "superagent": "^3.6.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-md": "^1.2.8",
+    "request": "^2.83.0",
+    "superagent": "^3.8.1",
     "xyfir-ads": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-es2016": "^6.24.1",
-    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "compression-webpack-plugin": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-favicons": "^2.2.7",
     "gulp-sass": "^3.1.0",
-    "gulp-util": "^3.0.8",
     "webpack": "^3.5.5"
   }
 }
