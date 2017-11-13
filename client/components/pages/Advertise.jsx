@@ -1,11 +1,6 @@
+import { TextField, Button, Paper } from 'react-md';
 import request from 'superagent';
 import React from 'react';
-
-// react-md
-import SelectField from 'react-md/lib/SelectFields';
-import TextField from 'react-md/lib/TextFields';
-import Button from 'react-md/lib/Buttons/Button';
-import Paper from 'react-md/lib/Papers';
 
 // Constants
 import { RECAPTCHA_KEY } from 'constants/config';
@@ -25,7 +20,7 @@ export default class Advertise extends React.Component {
     const data = {};
     
     for (let ref in this.refs)
-      data[ref] = this.refs[ref].getField().value;
+      data[ref] = this.refs[ref].value;
 
     data.recaptcha = grecaptcha.getResponse();
 
@@ -159,9 +154,9 @@ export default class Advertise extends React.Component {
 
           <Button
             raised primary
+            iconChildren='send'
             onClick={() => this.onSubmit()}
-            label='Submit'
-          >send</Button>
+          >Submit</Button>
         </Paper>
       </div>
     );

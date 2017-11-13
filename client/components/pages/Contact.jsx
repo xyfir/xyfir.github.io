@@ -1,11 +1,6 @@
+import { SelectField, TextField, Button, Paper } from 'react-md';
 import request from 'superagent';
 import React from 'react';
-
-// react-md
-import SelectField from 'react-md/lib/SelectFields';
-import TextField from 'react-md/lib/TextFields'
-import Button from 'react-md/lib/Buttons/Button';
-import Paper from 'react-md/lib/Papers';
 
 // Constants
 import { RECAPTCHA_KEY } from 'constants/config';
@@ -25,8 +20,8 @@ export default class Contact extends React.Component {
     const data = {
       regarding: this.refs.regarding.state.value,
       recaptcha: grecaptcha.getResponse(),
-      message: this.refs.message.getField().value,
-      email: this.refs.email.getField().value,
+      message: this.refs.message.value,
+      email: this.refs.email.value,
       tag: this.refs.tag.state.value
     };
 
@@ -62,7 +57,7 @@ export default class Contact extends React.Component {
           <SelectField
             id='select-regarding'
             ref='regarding'
-            label='Regarding Project'
+            label='Project'
             menuItems={
               ['N/A'].concat(
                 Object.keys(projects).map(p => projects[p].name)
@@ -110,9 +105,9 @@ export default class Contact extends React.Component {
 
           <Button
             raised primary
+            iconChildren='send'
             onClick={() => this.onSend()}
-            label='Send Message'
-          >send</Button>
+          >Send</Button>
         </Paper>
       </div>
     );
