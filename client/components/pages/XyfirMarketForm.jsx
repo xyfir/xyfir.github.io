@@ -1,4 +1,6 @@
-import { SelectField, TextField, Button, Paper, Checkbox } from 'react-md';
+import {
+  SelectField, TextField, Button, Paper, Checkbox
+} from 'react-md';
 import React from 'react';
 
 const template = data =>
@@ -34,6 +36,7 @@ export default class XyfirMarketForm extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = { tracking: false };
     this.i = {}; // input component refs
   }
 
@@ -46,8 +49,8 @@ export default class XyfirMarketForm extends React.Component {
       autobuy: window['checkbox--autobuy'].checked,
       currency: this.i.currency.value,
       category: this.i.category.value,
-      tracking: window['checkbox--tracking'].checked,
-      addresses: this.i.addresses.value,
+      tracking: this.state.tracking,
+      addresses: this.state.tracking ? this.i.addresses.value : '',
       description: this.i.description.value
     });
 
@@ -74,13 +77,15 @@ export default class XyfirMarketForm extends React.Component {
           component='section'
           className='form section flex'
         >
-          <h3>Required Fields</h3>
-
           <TextField
             id='text--title'
             ref={i => this.i.title = i}
             type='text'
             label='Title'
+            helpText={
+              'Keep your titles clean: no all-caps or attention-grabbing ' +
+              'characters'
+            }
             className='md-cell'
             defaultValue='Structured Sales Thread'
           />
@@ -101,13 +106,14 @@ export default class XyfirMarketForm extends React.Component {
             id='select--category'
             ref={i => this.i.category = i}
             label='Category'
+            helpText='Pick that one that matches best'
             menuItems={[
-              'Advertising', 'Automotives', 'Books', 'Collectibles',
+              'Advertising', 'Automotive', 'Books', 'Collectibles',
               'Computers', 'Cryptocurrency', 'Digital Goods', 'Electronics',
-              'Entertainment', 'Fashion', 'Fiat', 'Food and Beverage',
-              'Home & Garden', 'Industrial', 'NSFW', 'Other', 'Precious Metals',
+              'Entertainment', 'Fashion', 'Fiat', 'Games & Virtual Items',
+              'Home & Garden', 'Industrial', 'NSFW', 'Precious Metals',
               'Printed Media', 'Real Estate', 'Services', 'Sports & Hobbies',
-              'Vouchers & Gift Cards', 'Web'
+              'Uncategorized', 'Vouchers & Gift Cards', 'Web'
             ]}
             className='md-cell'
             defaultValue='Digital Goods'
@@ -119,6 +125,7 @@ export default class XyfirMarketForm extends React.Component {
             rows={2}
             type='text'
             label='Description'
+            helpText='Reddit-style Markdown supported'
             className='md-cell'
           />
 
@@ -133,23 +140,36 @@ export default class XyfirMarketForm extends React.Component {
             defaultValue='5.00'
           />
 
-          <TextField
-            id='text--currency'
-            ref={i => this.i.currency = i}
-            type='text'
-            label='Accepted Currency'
-            helpText='Space separated currency identifiers'
-            className='md-cell'
-            defaultValue='BTC LTC ETH'
-          />
-        </Paper>
+          <div className='currency flex'>
+            <TextField
+              id='text--currency'
+              ref={i => this.i.currency = i}
+              type='text'
+              label='Accepted Currency'
+              helpText='Space separated currency identifiers'
+              className='md-cell'
+              defaultValue='BTC LTC ETH'
+            />
 
-        <Paper
-          zDepth={1}
-          component='section'
-          className='form section flex'
-        >
-          <h3>Optional Fields</h3>
+            {this.state.tracking ? (
+              <TextField
+                id='textarea--addresses'
+                ref={i => this.i.addresses = i}
+                rows={3}
+                type='text'
+                label='Addresses'
+                helpText='Required when Tracking is enabled'
+                className='md-cell'
+                defaultValue={
+                  this.i.currency.value
+                    .split(' ')
+                    .filter(c => ['BTC', 'LTC', 'ETH'].indexOf(c) > -1)
+                    .map(c => `${c}=Your${c}AddressHere`)
+                    .join('\n')
+                }
+              />
+            ) : null}
+          </div>
 
           <div className='checkboxes'>
             <Checkbox
@@ -157,6 +177,7 @@ export default class XyfirMarketForm extends React.Component {
               id='checkbox--tracking'
               ref={i => this.i.tracking = i}
               label='Tracking'
+              onChange={v => this.setState({ tracking: v })}
             />
 
             <Checkbox
@@ -175,26 +196,12 @@ export default class XyfirMarketForm extends React.Component {
           </div>
 
           <TextField
-            id='textarea--addresses'
-            ref={i => this.i.addresses = i}
-            rows={3}
-            type='text'
-            label='Addresses'
-            helpText='Required if Tracking is enabled'
-            className='md-cell'
-            placeholder={
-              'BTC=1YourBitcoinAddressObR76b53LETtpyT\n' +
-              'LTC=3YourLitecoinAddressHXHXEeLygMXoAj\n' +
-              'ETH=0xYourEthereumAddress32487E1EfdD8729b87445'
-            }
-          />
-
-          <TextField
             id='textarea--images'
             ref={i => this.i.images = i}
             rows={2}
             type='text'
             label='Images'
+            helpText='(optional) Direct links to JPG/PNG/GIF images'
             className='md-cell'
             placeholder={
               'http://i.imgur.com/XXXXXXXXXXXXXX.jpg\n' +
