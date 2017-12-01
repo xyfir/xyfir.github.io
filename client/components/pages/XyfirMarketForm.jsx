@@ -22,6 +22,8 @@ const template = data =>
 
 **Autobuy** ${data.autobuy}
 
+**Repost** ${data.repost}
+
 ${data.tracking ?
 `**Addresses** ${data.addresses.split(/\s/).filter(c => c).join(' ')}`
 : ''}
@@ -46,6 +48,7 @@ export default class XyfirMarketForm extends React.Component {
       type: this.i.type.value,
       price: +this.i.price.value,
       images: this.i.images.value,
+      repost: window['checkbox--repost'].checked,
       autobuy: window['checkbox--autobuy'].checked,
       currency: this.i.currency.value,
       category: this.i.category.value,
@@ -66,7 +69,7 @@ export default class XyfirMarketForm extends React.Component {
       <div className='xyfir-market-form-builder'>
         <h2>Post to xyMarket</h2>
         <p>
-          Use this form to build a structured sales thread for xyMarket. Check the <a href='https://github.com/Xyfir/Documentation/blob/master/xyfir-market/sellers.md' target='_blank'>seller documentation</a> for more information about each field.
+          Use this form to build a structured sales thread for xyMarket. Check the <a href='https://github.com/Xyfir/Documentation/blob/master/xyfir-market/help.md' target='_blank'>documentation</a> for more information about each field.
         </p>
         <p>
           <strong>Warning!</strong> Currently, this form does not validate the data you provide, so you will not know if it is correct until xyMarketBot validates your post.
@@ -192,6 +195,13 @@ export default class XyfirMarketForm extends React.Component {
               id='checkbox--nsfw'
               ref={i => this.i.nsfw = i}
               label='NSFW'
+            />
+
+            <Checkbox
+              inline
+              id='checkbox--repost'
+              ref={i => this.i.repost = i}
+              label='Repost'
             />
           </div>
 
