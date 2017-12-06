@@ -113,10 +113,10 @@ export default class XyfirMarketForm extends React.Component {
             menuItems={[
               'Advertising', 'Automotive', 'Books', 'Collectibles',
               'Computers', 'Cryptocurrency', 'Digital Goods', 'Electronics',
-              'Entertainment', 'Fashion', 'Fiat', 'Games & Virtual Items',
-              'Home & Garden', 'Industrial', 'NSFW', 'Precious Metals',
-              'Printed Media', 'Real Estate', 'Services', 'Sports & Hobbies',
-              'Uncategorized', 'Vouchers & Gift Cards', 'Web'
+              'Entertainment', 'Fashion', 'Fiat', 'Games and Virtual Items',
+              'Home and Garden', 'Industrial', 'Internet', 'NSFW',
+              'Precious Metals', 'Printed Media', 'Real Estate', 'Services',
+              'Sports and Hobbies', 'Uncategorized', 'Vouchers and Gift Cards'
             ]}
             className='md-cell'
             defaultValue='Digital Goods'
