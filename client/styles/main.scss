@@ -30,9 +30,20 @@ a:hover, a:focus {
   justify-content: center;
 }
 
-section.md-paper.section {
+.md-paper.section {
+  background-color: #fff;
+  padding: 0.4em;
+
   text-align: left;
   margin: 1em;
+
+  >*:first-child {
+    margin-top: 0;
+  }
+
+  >*:last-child {
+    margin-bottom: 0;
+  }
 
   >button.md-btn--raised {
     margin: 1em;
