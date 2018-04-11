@@ -108,6 +108,13 @@ class App extends React.Component {
         <Toolbar
           colored
           className='toolbar'
+          actions={[
+            <Button
+              icon
+              onClick={() => location.href = '/'}
+              iconChildren='home'
+            />
+          ]}
           title='Xyfir'
           nav={
             <Button
