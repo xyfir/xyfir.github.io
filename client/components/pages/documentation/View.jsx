@@ -11,14 +11,14 @@ export default class ViewDocumentation extends React.Component {
 
     // Validate that project and documentation file exist
     if (p === undefined) {
-      location.hash = '#/documentation';
+      location.replace('/documentation');
     }
     else {
       const d = p.documentation[this.props.doc] ||
         p.documentation.legal[this.props.doc];
 
       if (d === undefined)
-        location.hash = '#/documentation';
+        location.replace('/documentation');
       else
         this.state = { project: p, documentation: d, file: '' };
     }

@@ -13,6 +13,9 @@ import Contact from 'components/pages/Contact';
 import Network from 'components/pages/Network';
 import About from 'components/pages/About';
 
+// Constants
+import { URL } from 'constants/config';
+
 class App extends React.Component {
 
   constructor(props) {
@@ -26,7 +29,29 @@ class App extends React.Component {
 
     this._alert = this._alert.bind(this);
 
-    window.onhashchange = () => this.forceUpdate();
+    // Redirect from old hash routes to normal routes
+    if (location.pathname == '/' && location.hash.startsWith('#/'))
+      return location.replace(location.hash.substr(1));
+
+    // Handle route changes from link clicks
+    document.addEventListener('click', e => {
+      const el = e.target.nodeName == 'A'
+        ? e.target : e.path
+        ? e.path.find(el => el.nodeName == 'A') : null;
+
+      if (!el)
+        return;
+      if (!el.href.startsWith(URL))
+        return;
+      if (e.ctrlKey || e.target.target == '_blank')
+        return window.open(el.href);
+
+      e.preventDefault();
+
+      history.pushState({}, '', el.href);
+      this.forceUpdate();
+    });
+    window.addEventListener('popstate', e => this.forceUpdate());
   }
 
   componentWillMount() {
@@ -59,14 +84,14 @@ class App extends React.Component {
   }
 
   render() {
-    if (!Object.keys(this.state.projects).length) return <div />;
+    if (!Object.keys(this.state.projects).length) return null;
 
     const props = {
       projects: this.state.projects,
       alert: this._alert
     },
     view = (() => {
-      switch (location.hash.split('/')[1]) {
+      switch (location.pathname.split('/')[1]) {
         case 'documentation': return <Documentation {...props} />
         case 'advertise': return <Advertise {...props} />
         case 'contact': return <Contact {...props} />
@@ -98,31 +123,31 @@ class App extends React.Component {
           className='toolbar'
           autoclose={true}
           navItems={[
-            <a href='#/network'>
+            <a href='/network'>
               <ListItem
                 leftIcon={<FontIcon>domain</FontIcon>}
                 primaryText='Network'
               />
             </a>,
-            <a href='#/contact'>
+            <a href='/contact'>
               <ListItem
                 leftIcon={<FontIcon>contact_mail</FontIcon>}
                 primaryText='Contact'
               />
             </a>,
-            <a href='#/about'>
+            <a href='/about'>
               <ListItem
                 leftIcon={<FontIcon>info_outline</FontIcon>}
                 primaryText='About Us'
               />
             </a>,
-            <a href='#/advertise'>
+            <a href='/advertise'>
               <ListItem
                 leftIcon={<FontIcon>attach_money</FontIcon>}
                 primaryText='Advertise'
               />
             </a>,
-            <a href='#/documentation'>
+            <a href='/documentation'>
               <ListItem
                 leftIcon={<FontIcon>insert_drive_file</FontIcon>}
                 primaryText='Documentation'

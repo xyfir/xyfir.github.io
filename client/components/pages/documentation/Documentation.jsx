@@ -11,7 +11,7 @@ export default class Documentation extends React.Component {
   }
 
   render() {
-    const match = location.hash.match(/^#\/documentation\/(.+)\/(.+)$/);
+    const match = location.pathname.match(/^\/documentation\/(.+)\/(.+)$/);
 
     if (!match)
       return <List {...this.props} />
