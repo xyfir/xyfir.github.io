@@ -1,3 +1,6 @@
+import {
+  ListItem, FontIcon, Snackbar, Toolbar, Drawer, Button
+} from 'react-md';
 import { render } from 'react-dom';
 import request from 'superagent';
 import React from 'react';
@@ -10,20 +13,16 @@ import Contact from 'components/pages/Contact';
 import Network from 'components/pages/Network';
 import About from 'components/pages/About';
 
-// react-md
-import ListItem from 'react-md/lib/Lists/ListItem';
-import Snackbar from 'react-md/lib/Snackbars';
-import Toolbar from 'react-md/lib/Toolbars';
-import Drawer from 'react-md/lib/Drawers';
-import Button from 'react-md/lib/Buttons/Button';
-
-
 class App extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.state = { projects: {}, drawer: false, toasts: [] };
+    this.state = {
+      projects: {},
+      drawer: false,
+      toasts: []
+    };
 
     this._alert = this._alert.bind(this);
 
@@ -100,19 +99,34 @@ class App extends React.Component {
           autoclose={true}
           navItems={[
             <a href='#/network'>
-              <ListItem primaryText='Network' />
+              <ListItem
+                leftIcon={<FontIcon>domain</FontIcon>}
+                primaryText='Network'
+              />
             </a>,
             <a href='#/contact'>
-              <ListItem primaryText='Contact' />
+              <ListItem
+                leftIcon={<FontIcon>contact_mail</FontIcon>}
+                primaryText='Contact'
+              />
             </a>,
             <a href='#/about'>
-              <ListItem primaryText='About Us' />
+              <ListItem
+                leftIcon={<FontIcon>info_outline</FontIcon>}
+                primaryText='About Us'
+              />
             </a>,
             <a href='#/advertise'>
-              <ListItem primaryText='Advertise' />
+              <ListItem
+                leftIcon={<FontIcon>attach_money</FontIcon>}
+                primaryText='Advertise'
+              />
             </a>,
             <a href='#/documentation'>
-              <ListItem primaryText='Documentation' />
+              <ListItem
+                leftIcon={<FontIcon>insert_drive_file</FontIcon>}
+                primaryText='Documentation'
+              />
             </a>
           ]}
           visible={this.state.drawer}
