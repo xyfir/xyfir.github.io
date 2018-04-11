@@ -22,6 +22,7 @@ export default class Advertise extends React.Component {
   }
 
   onSubmit() {
+    const {App} = this.props;
     const data = {};
 
     for (let ref in this.refs)
@@ -30,16 +31,16 @@ export default class Advertise extends React.Component {
     data.recaptcha = grecaptcha.getResponse();
 
     if (!data.recaptcha)
-      return this.props.alert('You must complete the captcha');
+      return App._alert('You must complete the captcha');
 
     request
       .post('api/advertise')
       .send(data)
       .end((err, res) => {
         if (err || res.body.error)
-          this.props.alert('Could not send message');
+          App._alert('Could not send message');
         else
-          this.props.alert('You should receive a reply within a day');
+          App._alert('You should receive a reply within a day');
       });
   }
 

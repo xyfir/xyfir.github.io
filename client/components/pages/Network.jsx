@@ -12,7 +12,7 @@ export default class Network extends React.Component {
   }
 
   render() {
-    const {projects} = this.props;
+    const {projects} = this.props.App.state;
 
     return (
       <section className='network'>

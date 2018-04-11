@@ -100,21 +100,16 @@ class App extends React.Component {
   render() {
     if (!Object.keys(this.state.projects).length) return null;
 
-    const props = {
-      projects: this.state.projects,
-      alert: this._alert,
-      App: this
-    },
-    view = (() => {
+    const view = (() => {
       switch (location.pathname.split('/')[1]) {
-        case 'documentation': return <Documentation {...props} />
-        case 'advertise': return <Advertise {...props} />
-        case 'contact': return <Contact {...props} />
-        case 'market': return <XyfirMarketForm {...props} />
-        case 'about': return <About {...props} />
+        case 'documentation': return <Documentation App={this} />
+        case 'advertise': return <Advertise App={this} />
+        case 'contact': return <Contact App={this} />
+        case 'market': return <XyfirMarketForm App={this} />
+        case 'about': return <About App={this} />
         case 'network':
         default:
-          return <Network {...props} />
+          return <Network App={this} />
       }
     })();
 

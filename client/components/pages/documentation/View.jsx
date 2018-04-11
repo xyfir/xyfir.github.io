@@ -7,7 +7,7 @@ export default class ViewDocumentation extends React.Component {
   constructor(props) {
     super(props);
 
-    const p = this.props.projects[this.props.project];
+    const p = this.props.App.state.projects[this.props.project];
 
     // Validate that project and documentation file exist
     if (p === undefined) return location.replace('/documentation');

@@ -22,6 +22,7 @@ export default class Contact extends React.Component {
   }
 
   onSend() {
+    const {App} = this.props;
     const data = {
       regarding: this.refs.regarding.state.value,
       recaptcha: grecaptcha.getResponse(),
@@ -31,21 +32,21 @@ export default class Contact extends React.Component {
     };
 
     if (!data.recaptcha)
-      return this.props.alert('You must complete the captcha')
+      return App._alert('You must complete the captcha')
 
     request
       .post('api/contact')
       .send(data)
       .end((err, res) => {
         if (err || res.body.error)
-          return this.props.alert('Could not send message');
+          return App._alert('Could not send message');
 
-        this.props.alert('You should receive a reply within a day');
+        App._alert('You should receive a reply within a day');
       });
   }
 
   render() {
-    const projects = this.props.projects;
+    const {projects} = this.props.App.state;
 
     return (
       <div className='contact-us'>

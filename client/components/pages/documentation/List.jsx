@@ -68,6 +68,8 @@ export default class DocumentationList extends React.Component {
   }
 
   render() {
+    const {projects} = this.props.App.state;
+
     return (
       <section className='documentation-list'>
       <TabsContainer
@@ -79,13 +81,13 @@ export default class DocumentationList extends React.Component {
         <Tabs tabId='tab' className='tabs'>
           <Tab label='Documentation'>
             <ul className='projects'>{
-              this.renderDocs(this.props.projects)
+              this.renderDocs(projects)
             }</ul>
           </Tab>
 
           <Tab label='Legal Docs'>
             <ul className='projects'>{
-              this.renderLegalDocs(this.props.projects)
+              this.renderLegalDocs(projects)
             }</ul>
           </Tab>
         </Tabs>
