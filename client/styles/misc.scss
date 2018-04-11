@@ -55,13 +55,32 @@ main.app >header {
   margin-bottom: 1em;
 }
 
-section.network {
-  div.project {
-    text-align: center;
+section.network >ul.projects {
+  text-align: left;
+  list-style: none;
+  max-width: 40em;
+  padding: 0;
+  margin: auto;
 
-    >h3.name {
-      margin-bottom: 0.3em;
-      margin-top: -0.2em;
+  >li {
+    display: flex;
+    margin: 2em 1em;
+
+    >img {
+      width: 5em;
+      height: 5em;
+      margin-right: 0.5em;
+    }
+
+    >div.info {
+      >h3.name {
+        margin-bottom: 0em;
+      }
+
+      >p {
+        font-size: 110%;
+        width: 100%;
+      }
     }
   }
 }
