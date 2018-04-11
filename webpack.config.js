@@ -4,7 +4,7 @@ const config = require('./config');
 const path = require('path');
 
 const plugins = [];
-const isProd = config.environment.type == 'prod';
+const isProd = config.environment.type == 'production';
 
 if (isProd) {
   plugins.push(
@@ -13,10 +13,6 @@ if (isProd) {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: false,
-      compress: { unused: false }
-    }),
     new CompressionPlugin({
       asset: '[path].gz'
     })
@@ -24,9 +20,11 @@ if (isProd) {
 }
 
 module.exports = {
-  
+
+  mode: config.environment.type,
+
   entry: './client/components/App.jsx',
-  
+
   output: {
     filename: 'App.js',
     path: path.resolve(__dirname, 'static/js')
