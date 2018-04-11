@@ -2,7 +2,7 @@ const validateCaptcha = require('lib/validate-captcha');
 const sendEmail = require('lib/send-email');
 
 /*
-  POST api/advertise
+  POST /api/advertise
   RETURN
     error: boolean, message?: string
   DESCRIPTION
@@ -12,18 +12,11 @@ module.exports = async function(req, res) {
 
   try {
     await validateCaptcha(req.body.recaptcha, req.ip);
-
-    const message = Object
-      .keys(req.body)
-      .map(key => `**${key}** = ${req.body[key]}`)
-      .join('\n\n');
-    
-    await sendEmail('Xyfir Ads | New Ad', message);
-
-    res.json({ error: false });
+    await sendEmail('Xyfir Ads | New Ad', JSON.stringify(req.body, null, 2));
+    res.status(200).json({ error: false });
   }
   catch (err) {
-    res.json({ error: true, message: err });
+    res.status(500).json({ error: true, message: err });
   }
 
 };
