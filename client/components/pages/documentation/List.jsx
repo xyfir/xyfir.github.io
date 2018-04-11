@@ -6,6 +6,11 @@ export default class DocumentationList extends React.Component {
   constructor(props) {
     super(props);
 
+    this.props.App.meta = {
+      title: 'Documentation',
+      description: `Find documentation for all of the projects in the Xyfir Network.`
+    };
+
     this.state = { tab: 0 };
   }
 

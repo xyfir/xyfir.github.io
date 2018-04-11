@@ -10,18 +10,28 @@ export default class ViewDocumentation extends React.Component {
     const p = this.props.projects[this.props.project];
 
     // Validate that project and documentation file exist
-    if (p === undefined) {
-      location.replace('/documentation');
-    }
-    else {
-      const d = p.documentation[this.props.doc] ||
-        p.documentation.legal[this.props.doc];
+    if (p === undefined) return location.replace('/documentation');
 
-      if (d === undefined)
-        location.replace('/documentation');
-      else
-        this.state = { project: p, documentation: d, file: '' };
-    }
+    const d =
+      p.documentation[this.props.doc] ||
+      p.documentation.legal[this.props.doc];
+
+    if (d === undefined) return location.replace('/documentation');
+
+    this.state = {
+      file: '',
+      project: p,
+      documentation: d
+    };
+
+    this.props.App.meta = {
+      title: [
+        this.state.documentation.name,
+        this.state.project.name,
+        'Documentation'
+      ],
+      description: this.state.documentation.description
+    };
   }
 
   componentDidMount() {

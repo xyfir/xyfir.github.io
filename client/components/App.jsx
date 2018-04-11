@@ -13,6 +13,9 @@ import Contact from 'components/pages/Contact';
 import Network from 'components/pages/Network';
 import About from 'components/pages/About';
 
+// Modules
+import AppMetadata from 'lib/AppMetadata';
+
 // Constants
 import { URL } from 'constants/config';
 
@@ -83,12 +86,24 @@ class App extends React.Component {
     });
   }
 
+  /**
+   * @typedef {object} AppMetadataValue
+   * @prop {string|string[]} title
+   * @prop {string} [description]
+   */
+  /** @param {AppMetadataValue} data */
+  set meta(data) {
+    AppMetadata.title = data.title,
+    AppMetadata.description = data.description;
+  }
+
   render() {
     if (!Object.keys(this.state.projects).length) return null;
 
     const props = {
       projects: this.state.projects,
-      alert: this._alert
+      alert: this._alert,
+      App: this
     },
     view = (() => {
       switch (location.pathname.split('/')[1]) {

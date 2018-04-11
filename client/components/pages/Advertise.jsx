@@ -10,6 +10,11 @@ export default class Advertise extends React.Component {
   constructor(props) {
     super(props);
 
+    this.props.App.meta = {
+      title: 'Advertise',
+      description: `Advertise on the Xyfir Network.`
+    };
+
     // Load reCAPTCHA lib
     const element = document.createElement('script');
     element.src = 'https://www.google.com/recaptcha/api.js';
@@ -18,7 +23,7 @@ export default class Advertise extends React.Component {
 
   onSubmit() {
     const data = {};
-    
+
     for (let ref in this.refs)
       data[ref] = this.refs[ref].value;
 

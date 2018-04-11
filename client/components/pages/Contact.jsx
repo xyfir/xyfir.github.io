@@ -10,6 +10,11 @@ export default class Contact extends React.Component {
   constructor(props) {
     super(props);
 
+    this.props.App.meta = {
+      title: 'Contact Us',
+      description: `Send us a message. Support, feedback, business inquiries, etc.`
+    };
+
     // Load reCAPTCHA lib
     const element = document.createElement('script');
     element.src = 'https://www.google.com/recaptcha/api.js';
