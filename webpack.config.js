@@ -44,7 +44,8 @@ module.exports = {
       loader: 'babel-loader',
       include: [
         path.resolve(__dirname, 'client/components'),
-        path.resolve(__dirname, 'client/constants')
+        path.resolve(__dirname, 'client/constants'),
+        path.resolve(__dirname, 'client/lib')
       ],
       exclude: /node_modules/,
       options: {
