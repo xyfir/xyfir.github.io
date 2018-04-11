@@ -1,5 +1,5 @@
 exports.environment = {
-  type: '',
+  type: '', // development|production
   port: -1
 };
 
@@ -11,6 +11,6 @@ exports.keys = {
 exports.addresses = {
 	mailgun: {
 		domain: '',
-		api: ''
+		api: `https://api:${exports.keys.mailgun}@api.mailgun.net/v3/`
 	}
 };
