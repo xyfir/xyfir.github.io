@@ -1,3 +1,60 @@
+body {
+	font-family: "Roboto", sans-serif;
+  text-align: center;
+	margin: 0;
+	margin-bottom: 1em;
+}
+
+p {
+	width: 80%;
+	margin: auto;
+}
+
+a {
+	color: $md-primary-color;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: $md-secondary-color;
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.md-paper.section {
+  background-color: #fff;
+  padding: 0.4em;
+
+  text-align: left;
+  margin: 1em;
+
+  >*:first-child {
+    margin-top: 0;
+  }
+
+  >*:last-child {
+    margin-bottom: 0;
+  }
+
+  >button.md-btn--raised {
+    margin: 1em;
+  }
+}
+
+nav.md-drawer > ul.md-list {
+  text-align: left;
+}
+
+main.app >header {
+  margin-bottom: 1em;
+}
+
 section.network {
   div.project {
     text-align: center;
