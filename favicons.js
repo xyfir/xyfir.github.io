@@ -63,6 +63,10 @@ function generate(icon, output, name) {
     name: 'xyButtons',
     icon: 'xybuttons.png',
     output: 'static/icons/xyfir-buttons/'
+  }, {
+    name: 'xyAnnotations',
+    icon: 'xyannotations.png',
+    output: 'static/icons/xyfir-annotations/'
   }];
 
   for (let project of projects) {
