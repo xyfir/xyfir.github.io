@@ -13,9 +13,7 @@ app.use(parser.urlencoded({ extended: true }));
 /* Routes / Controllers */
 app.use('/static', express.static(__dirname + '/static'));
 app.use('/api', require('./controllers/'));
-app.get('/*', (req, res) =>
-  res.sendFile(__dirname + '/views/App.html')
-);
+app.get('/*', (req, res) => res.sendFile(__dirname + '/views/App.html'));
 
 /* Start Server */
 app.listen(config.environment.port, () =>

@@ -6,7 +6,6 @@ import React from 'react';
 import { RECAPTCHA_KEY } from 'constants/config';
 
 export default class Contact extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -22,7 +21,7 @@ export default class Contact extends React.Component {
   }
 
   onSend() {
-    const {App} = this.props;
+    const { App } = this.props;
     const data = {
       regarding: this.refs.regarding.state.value,
       recaptcha: grecaptcha.getResponse(),
@@ -31,92 +30,91 @@ export default class Contact extends React.Component {
       tag: this.refs.tag.state.value
     };
 
-    if (!data.recaptcha)
-      return App._alert('You must complete the captcha')
+    if (!data.recaptcha) return App._alert('You must complete the captcha');
 
     request
       .post('api/contact')
       .send(data)
       .end((err, res) => {
-        if (err || res.body.error)
-          return App._alert('Could not send message');
+        if (err || res.body.error) return App._alert('Could not send message');
 
         App._alert('You should receive a reply within a day');
       });
   }
 
   render() {
-    const {projects} = this.props.App.state;
+    const { projects } = this.props.App.state;
 
     return (
-      <div className='contact-us'>
+      <div className="contact-us">
         <h2>Contact Us</h2>
         <p>
-          Enter in your message below and we'll do our best to reply within a day.
+          Enter in your message below and we'll do our best to reply within a
+          day.
         </p>
 
         <Paper
           zDepth={1}
-          component='section'
-          className='contact-form section flex'
+          component="section"
+          className="contact-form section flex"
         >
           <SelectField
-            id='select-regarding'
-            ref='regarding'
-            label='Project'
-            menuItems={
-              ['N/A'].concat(
-                Object.keys(projects).map(p => projects[p].name)
-              )
-            }
-            className='md-cell'
-            placeholder='N/A'
+            id="select-regarding"
+            ref="regarding"
+            label="Project"
+            menuItems={['N/A'].concat(
+              Object.keys(projects).map(p => projects[p].name)
+            )}
+            className="md-cell"
+            placeholder="N/A"
           />
 
           <SelectField
-            id='select-tag'
-            ref='tag'
-            label='Tag'
+            id="select-tag"
+            ref="tag"
+            label="Tag"
             menuItems={[
-              'Other', 'Support', 'Feedback', 'Bug Report',
+              'Other',
+              'Support',
+              'Feedback',
+              'Bug Report',
               'Business Inquiry'
             ]}
-            className='md-cell'
+            className="md-cell"
           />
 
           <TextField
-            id='text-email'
-            ref='email'
-            type='email'
-            label='Email'
-            className='md-cell'
+            id="text-email"
+            ref="email"
+            type="email"
+            label="Email"
+            className="md-cell"
           />
 
           <TextField
-            id='text-message'
-            ref='message'
+            id="text-message"
+            ref="message"
             rows={10}
-            type='text'
-            label='Message'
-            className='md-cell'
-            lineDirection='right'
+            type="text"
+            label="Message"
+            className="md-cell"
+            lineDirection="right"
           />
 
-          <div className='recaptcha-wrapper'>
-            <div
-              className='g-recaptcha'
-              data-sitekey={RECAPTCHA_KEY}
-            />
+          <div className="recaptcha-wrapper">
+            <div className="g-recaptcha" data-sitekey={RECAPTCHA_KEY} />
           </div>
 
           <Button
-            raised primary
-            iconChildren='send'
+            raised
+            primary
+            iconChildren="send"
             onClick={() => this.onSend()}
-          >Send</Button>
+          >
+            Send
+          </Button>
         </Paper>
       </div>
     );
   }
-
 }

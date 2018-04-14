@@ -9,8 +9,8 @@ exports.keys = {
 };
 
 exports.addresses = {
-	mailgun: {
-		domain: '',
-		api: `https://api:${exports.keys.mailgun}@api.mailgun.net/v3/`
-	}
+  mailgun: {
+    domain: '',
+    api: `https://api:${exports.keys.mailgun}@api.mailgun.net/v3/`
+  }
 };

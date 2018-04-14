@@ -1,5 +1,10 @@
 import {
-  ListItem, FontIcon, Snackbar, Toolbar, Drawer, Button
+  ListItem,
+  FontIcon,
+  Snackbar,
+  Toolbar,
+  Drawer,
+  Button
 } from 'react-md';
 import { render } from 'react-dom';
 import request from 'superagent';
@@ -20,7 +25,6 @@ import AppMetadata from 'lib/AppMetadata';
 import { URL } from 'constants/config';
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -38,16 +42,16 @@ class App extends React.Component {
 
     // Handle route changes from link clicks
     document.addEventListener('click', e => {
-      const el = e.target.nodeName == 'A'
-        ? e.target : e.path
-        ? e.path.find(el => el.nodeName == 'A') : null;
+      const el =
+        e.target.nodeName == 'A'
+          ? e.target
+          : e.path
+            ? e.path.find(el => el.nodeName == 'A')
+            : null;
 
-      if (!el)
-        return;
-      if (!el.href.startsWith(URL))
-        return;
-      if (e.ctrlKey || e.target.target == '_blank')
-        return window.open(el.href);
+      if (!el) return;
+      if (!el.href.startsWith(URL)) return;
+      if (e.ctrlKey || e.target.target == '_blank') return window.open(el.href);
 
       e.preventDefault();
 
@@ -61,10 +65,10 @@ class App extends React.Component {
     request
       .get(
         'https://raw.githubusercontent.com/Xyfir/Documentation/master/' +
-        'projects.json'
+          'projects.json'
       )
-      .end((err, res) =>
-        !err && this.setState({ projects: JSON.parse(res.text) })
+      .end(
+        (err, res) => !err && this.setState({ projects: JSON.parse(res.text) })
       );
   }
 
@@ -93,7 +97,7 @@ class App extends React.Component {
    */
   /** @param {AppMetadataValue} data */
   set meta(data) {
-    AppMetadata.title = data.title,
+    AppMetadata.title = data.title;
     AppMetadata.description = data.description;
   }
 
@@ -102,85 +106,90 @@ class App extends React.Component {
 
     const view = (() => {
       switch (location.pathname.split('/')[1]) {
-        case 'documentation': return <Documentation App={this} />
-        case 'advertise': return <Advertise App={this} />
-        case 'contact': return <Contact App={this} />
-        case 'market': return <XyfirMarketForm App={this} />
-        case 'about': return <About App={this} />
+        case 'documentation':
+          return <Documentation App={this} />;
+        case 'advertise':
+          return <Advertise App={this} />;
+        case 'contact':
+          return <Contact App={this} />;
+        case 'market':
+          return <XyfirMarketForm App={this} />;
+        case 'about':
+          return <About App={this} />;
         case 'network':
         default:
-          return <Network App={this} />
+          return <Network App={this} />;
       }
     })();
 
     return (
-      <main className='app'>
+      <main className="app">
         <Toolbar
           colored
-          className='toolbar'
+          className="toolbar"
           actions={[
             <Button
               icon
-              onClick={() => location.href = '/'}
-              iconChildren='home'
+              onClick={() => (location.href = '/')}
+              iconChildren="home"
             />
           ]}
-          title='Xyfir'
+          title="Xyfir"
           nav={
             <Button
               icon
               onClick={() => this.setState({ drawer: true })}
-              iconChildren='menu'
+              iconChildren="menu"
             />
           }
         />
 
         <Drawer
           onVisibilityChange={v => this.setState({ drawer: v })}
-          className='toolbar'
+          className="toolbar"
           autoclose={true}
           navItems={[
-            <a href='/network'>
+            <a href="/network">
               <ListItem
                 leftIcon={<FontIcon>domain</FontIcon>}
-                primaryText='Network'
+                primaryText="Network"
               />
             </a>,
-            <a href='/contact'>
+            <a href="/contact">
               <ListItem
                 leftIcon={<FontIcon>contact_mail</FontIcon>}
-                primaryText='Contact'
+                primaryText="Contact"
               />
             </a>,
-            <a href='/about'>
+            <a href="/about">
               <ListItem
                 leftIcon={<FontIcon>info_outline</FontIcon>}
-                primaryText='About Us'
+                primaryText="About Us"
               />
             </a>,
-            <a href='/advertise'>
+            <a href="/advertise">
               <ListItem
                 leftIcon={<FontIcon>attach_money</FontIcon>}
-                primaryText='Advertise'
+                primaryText="Advertise"
               />
             </a>,
-            <a href='/documentation'>
+            <a href="/documentation">
               <ListItem
                 leftIcon={<FontIcon>insert_drive_file</FontIcon>}
-                primaryText='Documentation'
+                primaryText="Documentation"
               />
             </a>
           ]}
           visible={this.state.drawer}
           header={
             <Toolbar
-              className='md-divider-border md-divider-border--bottom'
+              className="md-divider-border md-divider-border--bottom"
               colored
               nav={
                 <Button
                   icon
                   onClick={() => this.setState({ drawer: false })}
-                  iconChildren='arrow_back'
+                  iconChildren="arrow_back"
                 />
               }
             />
@@ -197,7 +206,6 @@ class App extends React.Component {
       </main>
     );
   }
-
 }
 
 render(<App />, document.querySelector('#content'));

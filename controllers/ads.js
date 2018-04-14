@@ -11,19 +11,15 @@ const xyAds = require('xyfir-ads');
 */
 
 module.exports = async function(req, res) {
-
   const options = {
     count: +req.query.count || 1,
-    keywords: req.query.keywords
-      ? req.query.keywords.split(',')
-      : [],
+    keywords: req.query.keywords ? req.query.keywords.split(',') : [],
     blacklist: req.query.blacklist
-      ? req.query.blacklist.split(',').map(a => isNaN(+a) ? a : +a)
+      ? req.query.blacklist.split(',').map(a => (isNaN(+a) ? a : +a))
       : []
   };
 
   if (req.query.xyfir) options.xyfir = !!+req.query.xyfir;
 
   res.json(await xyAds(options));
-
 };

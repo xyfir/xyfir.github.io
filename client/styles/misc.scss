@@ -1,21 +1,22 @@
 body {
-	font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
-	margin: 0;
-	margin-bottom: 1em;
+  margin: 0;
+  margin-bottom: 1em;
 }
 
 p {
-	width: 80%;
-	margin: auto;
+  width: 80%;
+  margin: auto;
 }
 
 a {
-	color: $md-primary-color;
+  color: $md-primary-color;
   cursor: pointer;
   text-decoration: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: $md-secondary-color;
   }
 }
@@ -34,15 +35,15 @@ a {
   text-align: left;
   margin: 1em;
 
-  >*:first-child {
+  > *:first-child {
     margin-top: 0;
   }
 
-  >*:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 
-  >button.md-btn--raised {
+  > button.md-btn--raised {
     margin: 1em;
   }
 }
@@ -51,33 +52,33 @@ nav.md-drawer > ul.md-list {
   text-align: left;
 }
 
-main.app >header {
+main.app > header {
   margin-bottom: 1em;
 }
 
-section.network >ul.projects {
+section.network > ul.projects {
   text-align: left;
   list-style: none;
   max-width: 40em;
   padding: 0;
   margin: auto;
 
-  >li {
+  > li {
     display: flex;
     margin: 2em 1em;
 
-    >img {
+    > img {
       width: 5em;
       height: 5em;
       margin-right: 0.5em;
     }
 
-    >div.info {
-      >h3.name {
+    > div.info {
+      > h3.name {
         margin-bottom: 0em;
       }
 
-      >p {
+      > p {
         font-size: 110%;
         width: 100%;
       }

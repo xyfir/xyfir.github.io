@@ -1,5 +1,4 @@
 export default class AppMetadata {
-
   /** @return {string} */
   static get title() {
     return document.title;
@@ -23,5 +22,4 @@ export default class AppMetadata {
       description ||
       `The Xyfir Network is home to many sites, services, and applications.`;
   }
-
 }

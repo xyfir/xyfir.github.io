@@ -9,14 +9,11 @@ const sendEmail = require('lib/send-email');
     Build an email using req.body and send to contact@xyfir.com
 */
 module.exports = async function(req, res) {
-
   try {
     await validateCaptcha(req.body.recaptcha, req.ip);
     await sendEmail('Xyfir Ads | New Ad', JSON.stringify(req.body, null, 2));
     res.status(200).json({ error: false });
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).json({ error: true, message: err });
   }
-
 };
