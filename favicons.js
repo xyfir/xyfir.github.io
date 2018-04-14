@@ -72,6 +72,11 @@ function generate(icon, output, name) {
       name: 'xyAnnotations',
       icon: 'xyannotations.png',
       output: 'static/icons/xyfir-annotations/'
+    },
+    {
+      name: 'Ptorx',
+      icon: 'ptorx.png',
+      output: 'static/icons/ptorx/'
     }
   ];
 
