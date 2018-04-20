@@ -61,7 +61,7 @@ function generate(icon, output, name) {
     {
       name: 'Xyfir',
       icon: 'xyfir.png',
-      output: 'static/icons/'
+      output: 'static/icons/xyfir/'
     },
     {
       name: 'xyButtons',
@@ -77,6 +77,11 @@ function generate(icon, output, name) {
       name: 'Ptorx',
       icon: 'ptorx.png',
       output: 'static/icons/ptorx/'
+    },
+    {
+      name: 'xyBooks',
+      icon: 'xybooks.png',
+      output: 'static/icons/xyfir-books/'
     }
   ];
 
