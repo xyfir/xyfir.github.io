@@ -22,10 +22,13 @@ if (isProd) {
 module.exports = {
   mode: config.environment.type,
 
-  entry: './client/components/App.jsx',
+  entry: {
+    App: './client/components/App.jsx',
+    XSS: './client/components/XSS.jsx'
+  },
 
   output: {
-    filename: 'App.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'static/js')
   },
 
