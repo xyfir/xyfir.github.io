@@ -11,7 +11,6 @@ import request from 'superagent';
 import React from 'react';
 
 // Components
-import XyfirMarketForm from 'components/pages/XyfirMarketForm';
 import Documentation from 'components/pages/documentation/Documentation';
 import Advertise from 'components/pages/Advertise';
 import Contact from 'components/pages/Contact';
@@ -112,8 +111,6 @@ class App extends React.Component {
           return <Advertise App={this} />;
         case 'contact':
           return <Contact App={this} />;
-        case 'market':
-          return <XyfirMarketForm App={this} />;
         case 'about':
           return <About App={this} />;
         case 'network':
