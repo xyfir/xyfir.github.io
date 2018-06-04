@@ -1,0 +1,88 @@
+@import '3p/react-md.scss';
+
+div.xyfir-software-solutions {
+  background-color: white;
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: $md-primary-color;
+
+    &:hover,
+    &:focus {
+      color: $md-secondary-color;
+    }
+  }
+
+  > header,
+  > main > section,
+  > footer {
+    max-width: 65em;
+    padding: 2em;
+    margin: auto;
+  }
+
+  > header {
+    > h1 {
+      color: $md-primary-color;
+      margin-bottom: 0;
+      text-transform: uppercase;
+
+      > span.xss {
+        color: black;
+        font-size: 50%;
+        font-weight: bold;
+        vertical-align: super;
+      }
+    }
+
+    > p {
+      font-size: 160%;
+      line-height: 150%;
+      border-bottom: solid $md-primary-color 0.2em;
+      padding: 1.2em 0;
+    }
+  }
+
+  > main > section {
+    > h2 {
+      font-weight: bold;
+    }
+
+    > p {
+      font-size: 135%;
+      line-height: 150%;
+    }
+
+    &.contact {
+      > p.message {
+        &.error {
+          color: red;
+        }
+
+        &.sent {
+          color: green;
+        }
+      }
+
+      > form {
+        > div.recaptcha-wrapper {
+          margin-bottom: 1em;
+        }
+
+        &.hide {
+          transition: visibility 0s linear 0.33s, opacity 0.33s linear;
+          visibility: hidden;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  > footer {
+    > span.made-in-california {
+      text-transform: uppercase;
+      color: $md-grey-500;
+    }
+  }
+}
