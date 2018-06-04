@@ -33,10 +33,10 @@ export default class Contact extends React.Component {
     if (!data.recaptcha) return App._alert('You must complete the captcha');
 
     request
-      .post('api/contact')
+      .post('/api/contact')
       .send(data)
       .end((err, res) => {
-        if (err || res.body.error) return App._alert('Could not send message');
+        if (err) return App._alert('Could not send message');
 
         App._alert('You should receive a reply within a day');
       });

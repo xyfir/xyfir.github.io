@@ -2,7 +2,7 @@ const validateCaptcha = require('lib/validate-captcha');
 const sendEmail = require('lib/send-email');
 
 /*
-  POST api/contact
+  POST /api/contact
   REQUIRED
     tag: string, regarding: string, message: string, email: string,
     recaptcha: string
@@ -17,11 +17,10 @@ module.exports = async function(req, res) {
 
   try {
     await validateCaptcha(req.body.recaptcha, req.ip);
-
     await sendEmail(`${b.regarding} | ${b.tag} | ${b.email}`, b.message);
 
-    res.json({ error: false });
+    res.status(200).json({});
   } catch (err) {
-    res.json({ error: true, message: err });
+    res.status(400).json({ message: err });
   }
 };
