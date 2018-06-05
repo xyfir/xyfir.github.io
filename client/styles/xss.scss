@@ -46,7 +46,15 @@ div.xyfir-software-solutions {
 
   > main > section {
     > h2 {
+      display: flex;
+      align-items: center;
       font-weight: bold;
+
+      > img {
+        height: 2em;
+        display: inline-block;
+        margin-right: 0.3em;
+      }
     }
 
     > p {
@@ -80,9 +88,14 @@ div.xyfir-software-solutions {
   }
 
   > footer {
-    > span.made-in-california {
+    > p.made-in-california {
       text-transform: uppercase;
       color: $md-grey-500;
+    }
+
+    > p.license {
+      color: $md-grey-500;
+      font-size: 80%;
     }
   }
 }
