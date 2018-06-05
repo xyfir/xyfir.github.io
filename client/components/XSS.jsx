@@ -10,7 +10,12 @@ class XSS extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { error: false, sent: false, licenseHover: false };
+    this.state = {
+      sent: false,
+      error: false,
+      darkTheme: false,
+      licenseHover: false
+    };
 
     // Load reCAPTCHA lib
     const element = document.createElement('script');
@@ -35,8 +40,27 @@ class XSS extends React.Component {
   }
 
   render() {
+    const { sent, error, licenseHover, darkTheme } = this.state;
+
     return (
-      <div className="xyfir-software-solutions">
+      <div
+        className={
+          'xyfir-software-solutions ' +
+          (this.state.darkTheme ? 'dark-theme' : 'light-theme')
+        }
+      >
+        <Button
+          floating
+          primary
+          fixed
+          mini
+          tooltipPosition="left"
+          fixedPosition="tr"
+          iconChildren={`brightness_${darkTheme ? 7 : 3}`}
+          tooltipLabel="Toggle light/dark theme"
+          onClick={() => this.setState({ darkTheme: !darkTheme })}
+        />
+
         <header>
           <h1>
             Xyfir Software Solutions <span className="xss">(XSS)</span>
@@ -190,19 +214,19 @@ class XSS extends React.Component {
               down in a single, searchable location. It makes everything easier.
             </p>
 
-            {this.state.error ? (
+            {error ? (
               <p className="message error">
                 Something went wrong while sending the message. Maybe try{' '}
                 <a href="mailto:contact@xyfir.com">contacting us directly</a>?
               </p>
-            ) : this.state.sent ? (
+            ) : sent ? (
               <p className="message sent">
                 Your message was sent! You should receive a response within a
                 day or two.
               </p>
             ) : null}
 
-            <form className={this.state.sent ? 'hide' : ''}>
+            <form className={sent ? 'hide' : ''}>
               <TextField
                 required
                 id="email"
@@ -248,7 +272,7 @@ class XSS extends React.Component {
             <a href="https://www.xyfir.com"> Xyfir</a>.
           </p>
 
-          {this.state.licenseHover ? (
+          {licenseHover ? (
             <p
               className="license hover"
               onMouseOut={() => this.setState({ licenseHover: false })}
