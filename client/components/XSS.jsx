@@ -10,7 +10,7 @@ class XSS extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { error: false, sent: false };
+    this.state = { error: false, sent: false, licenseHover: false };
 
     // Load reCAPTCHA lib
     const element = document.createElement('script');
@@ -55,7 +55,10 @@ class XSS extends React.Component {
 
         <main>
           <section className="web-apps">
-            <h2>Websites and Web Applications</h2>
+            <h2>
+              <img src="/static/images/web.svg" />
+              Websites and Web Applications
+            </h2>
             <p>
               Xyfir Software Solutions is no stranger to building web
               applications, top to bottom, entirely from scratch. In fact, they
@@ -77,7 +80,10 @@ class XSS extends React.Component {
           </section>
 
           <section className="mobile-apps">
-            <h2>Mobile Apps</h2>
+            <h2>
+              <img src="/static/images/mobile.svg" />
+              Mobile Apps
+            </h2>
             <p>
               Looking for an iOS, Android, or Windows Phone app? No problem,
               we've built and maintain a handful of them for our own projects
@@ -90,7 +96,10 @@ class XSS extends React.Component {
           </section>
 
           <section className="bots">
-            <h2>Bots, Web Scrapers, and Automation</h2>
+            <h2>
+              <img src="/static/images/robot.svg" />
+              Bots, Web Scrapers, and Automation
+            </h2>
             <p>
               When it comes to automation, we've truly done it all, having
               worked with almost every automation tool, language, and framework
@@ -107,7 +116,10 @@ class XSS extends React.Component {
           </section>
 
           <section className="servers">
-            <h2>Server Setup and Maintenance</h2>
+            <h2>
+              <img src="/static/images/server.svg" />
+              Server Setup and Maintenance
+            </h2>
             <p>
               Xyfir is not a hosting company, but we
               <em> do</em> have a lot of experience working with servers. If you
@@ -119,7 +131,10 @@ class XSS extends React.Component {
           </section>
 
           <section className="functionality">
-            <h2>Functionality Over Aesthetics</h2>
+            <h2>
+              <img src="/static/images/code.svg" />
+              Functionality Over Aesthetics
+            </h2>
             <p>
               We prefer simplicity in the interfaces we build over pretty
               gimmicks that slow down the end user. An added benefit of this is
@@ -138,7 +153,10 @@ class XSS extends React.Component {
           </section>
 
           <section className="contact">
-            <h2>Contact Us</h2>
+            <h2>
+              <img src="/static/images/at.svg" />
+              Contact Us
+            </h2>
             <p>
               Interested in our services? Send us a message. At XSS, all
               correspondence is made over email so that everything is written
@@ -198,10 +216,27 @@ class XSS extends React.Component {
         </main>
 
         <footer>
-          <span className="made-in-california">
+          <p className="made-in-california">
             Designed & Built in California by
             <a href="https://www.xyfir.com"> Xyfir</a>.
-          </span>
+          </p>
+
+          {this.state.licenseHover ? (
+            <p
+              className="license hover"
+              onMouseOut={() => this.setState({ licenseHover: false })}
+            >
+              Icons made by Yannick, Linh Pham, SimpleIcon, Dave Gandy, Google,
+              & Vaadin on FlatIcon.com, and are licensed by CC BY 3.0.
+            </p>
+          ) : (
+            <p
+              className="license default"
+              onMouseOver={() => this.setState({ licenseHover: true })}
+            >
+              Icons from FlatIcon.com
+            </p>
+          )}
         </footer>
       </div>
     );
