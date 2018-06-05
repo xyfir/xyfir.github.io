@@ -68,6 +68,13 @@ class XSS extends React.Component {
               apps and more, we've built it all.
             </p>
             <p>
+              Another great feature of web applications is the ease of which web
+              applications are ported from the web to native mobile and desktop
+              applications. This allows you to expand the platforms your app
+              supports while not breaking the bank developing multiple separate
+              apps.
+            </p>
+            <p>
               <a href="https://reactjs.org">React</a>,
               <a href="https://nodejs.org/en/"> Node.js</a>,
               <a href="https://sass-lang.com"> SASS</a>,
@@ -79,10 +86,10 @@ class XSS extends React.Component {
             </p>
           </section>
 
-          <section className="mobile-apps">
+          <section className="mobile-and-desktop-apps">
             <h2>
               <img src="/static/images/mobile.svg" />
-              Mobile Apps
+              Mobile and Desktop Apps
             </h2>
             <p>
               Looking for an iOS, Android, or Windows Phone app? No problem,
@@ -90,8 +97,13 @@ class XSS extends React.Component {
               and can do the same for you. With technologies like
               <a href="https://cordova.apache.org"> Cordova</a> and
               <a href="https://phonegap.com"> PhoneGap</a> we're able to bring
-              our previously mentioned web applications to mobile devices while
-              being able to utilize the native device features.
+              our previously built web applications to mobile devices while
+              utilizing native device features.
+            </p>
+            <p>
+              Want a Windows, MacOS, or even Linux application as well? Our
+              experience with <a href="https://electronjs.org/">Electron </a>
+              means we can do that too.
             </p>
           </section>
 
@@ -103,14 +115,14 @@ class XSS extends React.Component {
             <p>
               When it comes to automation, we've truly done it all, having
               worked with almost every automation tool, language, and framework
-              to have been created or popular within the past seven years. Bots
-              are an extremely valuable asset that are consistently overlooked.
-              From web scraping for content, data mining, testing, public
-              relations, marketing, and advances in publicly available
-              artificial intelligence tools, the possibility for automation is
-              endless. Xyfir itself maintains an entire network of bots that
-              handle everything from marketing, to testing, and beyond. Simply
-              put:
+              to have been created or popular within the past eight plus years.
+              Bots are an extremely valuable asset that are consistently
+              overlooked. From web scraping for content, data mining, testing,
+              public relations, marketing, and advances in publicly available
+              artificial intelligence tools, the possibilities for automation
+              are endless. Xyfir itself hosts an entire network of bots that
+              handle everything from marketing, testing, content generation and
+              beyond. Simply put:
               <strong> we know bots</strong>.
             </p>
           </section>
@@ -122,33 +134,48 @@ class XSS extends React.Component {
             </h2>
             <p>
               Xyfir is not a hosting company, but we
-              <em> do</em> have a lot of experience working with servers. If you
+              <em> do</em> have a lot of experience working with servers, mainly
+              <a href="https://www.ubuntu.com/server"> Ubuntu Server</a>. If you
               want your own website or application, having at least one server
               is most likely an unavoidable fact of life. Xyfir can recommend
               quality hosting solutions that meet your needs, and it can also
-              setup, manage, secure, and update your servers for you.
+              setup, manage, secure, and update those servers for you.
             </p>
           </section>
 
-          <section className="functionality">
+          <section className="aesthetics">
             <h2>
-              <img src="/static/images/code.svg" />
-              Functionality Over Aesthetics
+              <img src="/static/images/paint.svg" />
+              Simple Aesthetics
             </h2>
             <p>
               We prefer simplicity in the interfaces we build over pretty
-              gimmicks that slow down the end user. An added benefit of this is
-              decreasing code complexity and thus the costs to our clients. Take
-              a look at the clean, user-friendly interfaces we've built for our
-              some of our own sites, like
+              gimmicks that slow down the end user. An added benefit of this
+              model is decreasing code complexity and thus the costs to our
+              clients. Take a look at the clean, user-friendly interfaces we've
+              built for our some of our own sites, like
               <a href="https://annotations.xyfir.com"> xyAnnotations</a> and
               <a href="https://ptorx.com"> Ptorx</a>.
             </p>
             <p>
-              We're big fans of Google's
+              We're also big fans of Google's
               <a href="https://material.io/design/"> Material Design</a> and try
               to implement it wherever possible. If you're not a fan of it
               however, we can use other designs as you wish.
+            </p>
+          </section>
+
+          <section className="experience">
+            <h2>
+              <img src="/static/images/code.svg" />
+              Almost a Decade of Development Experience
+            </h2>
+            <p>
+              It's safe to say we've been doing this for a while. Our experience
+              is old, but our ideas, technologies, and coding conventions are
+              fresh. We learn the best and newest tech and then choose the most
+              reliable foundation to build upon so as to ensure a successful
+              future for everything we build.
             </p>
           </section>
 
