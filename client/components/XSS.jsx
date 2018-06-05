@@ -13,7 +13,7 @@ class XSS extends React.Component {
     this.state = {
       sent: false,
       error: false,
-      darkTheme: false,
+      darkTheme: !!localStorage.darkTheme,
       licenseHover: false
     };
 
@@ -21,6 +21,15 @@ class XSS extends React.Component {
     const element = document.createElement('script');
     element.src = 'https://www.google.com/recaptcha/api.js';
     document.body.appendChild(element);
+  }
+
+  onToggleTheme() {
+    const darkTheme = !this.state.darkTheme;
+
+    if (darkTheme) localStorage.darkTheme = true;
+    else delete localStorage.darkTheme;
+
+    this.setState({ darkTheme });
   }
 
   onSubmit() {
@@ -58,7 +67,7 @@ class XSS extends React.Component {
           fixedPosition="tr"
           iconChildren={`brightness_${darkTheme ? 7 : 3}`}
           tooltipLabel="Toggle light/dark theme"
-          onClick={() => this.setState({ darkTheme: !darkTheme })}
+          onClick={() => this.onToggleTheme()}
         />
 
         <header>
@@ -245,9 +254,7 @@ class XSS extends React.Component {
                 type="text"
                 leftIcon={<FontIcon>edit</FontIcon>}
                 maxLength={10000}
-                placeholder="Tell us what you're looking for and we'll let you know if and
-                when we can do it. Whatever it is, we've probably done it
-                before."
+                placeholder="Tell us about your project"
               />
 
               <div className="recaptcha-wrapper">
