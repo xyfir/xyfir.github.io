@@ -1,13 +1,15 @@
 {
   "name": "www.xyfir.com",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "npm run build:css & npm run build:js & npm run build:favicons",
+    "build": "npm run build:css && npm run build:js && npm run build:favicons && npm run build:images",
     "build:js": "webpack-cli",
-    "build:css":
-      "node-sass client/styles/style.scss static/css/style.css --output-style compressed",
+    "build:css": "npm run build:css:app && npm run build:css:xss",
+    "build:css:app": "node-sass client/styles/style.scss static/css/style.css --output-style compressed",
+    "build:css:xss": "node-sass client/styles/xss.scss static/css/xss.css --output-style compressed",
+    "build:images": "node -e \"require('fs-extra').copy('res/images', 'static/images', console.log)\"",
     "build:favicons": "node favicons"
   },
   "repository": {
@@ -22,26 +24,27 @@
   },
   "dependencies": {
     "app-module-path": "^2.2.0",
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "fs-extra": "^6.0.1",
     "github-markdown-css": "^2.10.0",
-    "mailgun-js": "^0.17.0",
-    "marked": "^0.3.19",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-md": "^1.2.13",
-    "superagent": "^3.8.2",
+    "mailgun-js": "^0.18.0",
+    "marked": "^0.4.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-md": "^1.3.5",
+    "superagent": "^3.8.3",
     "xyfir-ads": "^1.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "compression-webpack-plugin": "^1.1.3",
     "favicons": "^5.1.1",
-    "node-sass": "^4.8.3",
-    "prettier": "^1.12.1",
-    "webpack": "^4.6.0"
+    "node-sass": "^4.9.0",
+    "prettier": "^1.13.4",
+    "webpack": "^4.11.0"
   }
 }
