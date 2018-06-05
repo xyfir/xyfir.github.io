@@ -1,7 +1,39 @@
 @import '3p/react-md.scss';
 
+@include react-md-theme-everything(
+  $md-primary-color,
+  $md-secondary-color,
+  false,
+  'dark-theme'
+);
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
 div.xyfir-software-solutions {
-  background-color: white;
+  &.light-theme {
+    background-color: white;
+
+    > header > h1 > span.xss {
+      color: black;
+    }
+  }
+
+  &.dark-theme {
+    background-color: $md-grey-800;
+
+    p,
+    h2,
+    > header > h1 > span.xss {
+      color: white;
+    }
+  }
+
+  > button {
+    position: absolute;
+  }
 
   a {
     text-decoration: none;
