@@ -1,9 +1,30 @@
 {
+  "brhop": {
+    "name": "BrHop",
+    "link": "https://www.brhop.com",
+    "icon": "https://brhop.com/api/images/logo.png",
+    "description": "Find popular bars near you. A joint project with Lazris.com.",
+    "documentation": {
+      "legal": {
+        "privacy": {
+          "name": "Privacy Policy",
+          "location": "brhop/privacy"
+        }
+      }
+    }
+  },
+  "open-source": {
+    "name": "Open Source",
+    "link": "https://github.com/Xyfir",
+    "icon": "/static/images/github.svg",
+    "description": "Xyfir maintains many useful open source packages and projects on GitHub.",
+    "documentation": {}
+  },
   "ptorx": {
     "name": "Ptorx",
-    "link": "https://ptorx.com/",
-    "icon": "https://www.xyfir.com/static/icons/ptorx/android-chrome-256x256.png",
-    "description": "Proxy emails for an extra layer of security, privacy, and control for your emails.",
+    "link": "https://ptorx.com",
+    "icon": "/static/icons/ptorx/android-chrome-256x256.png",
+    "description": "Increase your privacy and security on the web via proxy emails.",
     "documentation": {
       "help": {
         "name": "Help Documents",
@@ -28,9 +49,9 @@
     }
   },
   "xyfir-accounts": {
-    "name": "Xyfir Accounts",
-    "link": "https://accounts.xyfir.com/",
-    "icon": "https://www.xyfir.com/static/icons/android-chrome-256x256.png",
+    "name": "xyAccounts",
+    "link": "https://accounts.xyfir.com",
+    "icon": "/static/icons/xyfir/android-chrome-256x256.png",
     "description": "Account management system for the Xyfir Network.",
     "documentation": {
       "integration": {
@@ -53,8 +74,8 @@
   "xyfir-ads": {
     "name": "Xyfir Ads",
     "link": "https://github.com/Xyfir/Ads",
-    "icon": "https://www.xyfir.com/static/icons/android-chrome-256x256.png",
-    "description": "Advertisement system for the entire Xyfir Network.",
+    "icon": "/static/icons/xyfir/android-chrome-256x256.png",
+    "description": "A simple and open advertisement system for the entire Xyfir Network.",
     "documentation": {
       "info": {
         "name": "Information",
@@ -70,10 +91,10 @@
     }
   },
   "xyfir-annotations": {
-    "name": "Xyfir Annotations",
-    "link": "https://annotations.xyfir.com/",
-    "icon": "https://www.xyfir.com/static/icons/xyfir-annotations/android-chrome-256x256.png",
-    "description": "A single platform for storing, finding, and managing interactive annotations for ebooks.",
+    "name": "xyAnnotations",
+    "link": "https://annotations.xyfir.com",
+    "icon": "/static/icons/xyfir-annotations/android-chrome-256x256.png",
+    "description": "xyAnnotations is annotating the world's books, one ebook at a time.",
     "documentation": {
       "help": {
         "name": "Help Documents",
@@ -103,10 +124,10 @@
     }
   },
   "xyfir-books": {
-    "name": "Xyfir Books",
-    "link": "https://books.xyfir.com/",
+    "name": "xyBooks",
+    "link": "https://books.xyfir.com",
     "icon": "https://books.xyfir.com/static/icons/android-chrome-256x256.png",
-    "description": "An all-in-one cloud-synced ebook reader, storage, and management system.",
+    "description": "An all-in-one, cloud-synced ebook reader, storage, and management system.",
     "documentation": {
       "help": {
         "name": "Help Documents",
@@ -126,10 +147,10 @@
     }
   },
   "xyfir-buttons": {
-    "name": "Xyfir Buttons",
+    "name": "xyButtons",
     "link": "https://chrome.google.com/webstore/detail/xyfir-buttons/pkinkjdmfgcfmdbdpmfbebhiedohnpnd",
-    "icon": "https://www.xyfir.com/static/icons/xyfir-buttons/android-chrome-256x256.png",
-    "description": "Control the web with floating buttons.",
+    "icon": "/static/icons/xyfir-buttons/android-chrome-256x256.png",
+    "description": "A new type of userscript browser extension. Control the web with floating buttons.",
     "documentation": {
       "legal": {
         "privacy": {
