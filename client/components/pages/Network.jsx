@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Constants
+import projects from 'constants/projects.json';
+
 export default class Network extends React.Component {
   constructor(props) {
     super(props);
@@ -11,26 +14,32 @@ export default class Network extends React.Component {
   }
 
   render() {
-    const { projects } = this.props.App.state;
-
     return (
       <section className="network">
-        <h2>Network</h2>
+        <header>
+          <h1>The Xyfir Network</h1>
+          <p>
+            Xyfir has built and maintains a large amount of applications, sites,
+            and services. Here are a few of our actively-developed projects:
+          </p>
+        </header>
 
         <ul className="projects">
-          {Object.keys(projects).map(p => (
-            <li className="project" key={p}>
-              <img src={projects[p].icon} />
-              <div className="info">
-                <h3 className="name">
-                  <a href={projects[p].link} target="_blank">
-                    {projects[p].name}
-                  </a>
-                </h3>
-                <p className="description">{projects[p].description}</p>
-              </div>
-            </li>
-          ))}
+          {Object.keys(projects)
+            .sort(() => Math.round(Math.random()))
+            .map(p => (
+              <li className="project" key={p}>
+                <img src={projects[p].icon} />
+                <div className="info">
+                  <h2 className="name">
+                    <a href={projects[p].link} target="_blank">
+                      {projects[p].name}
+                    </a>
+                  </h2>
+                  <p className="description">{projects[p].description}</p>
+                </div>
+              </li>
+            ))}
         </ul>
       </section>
     );
