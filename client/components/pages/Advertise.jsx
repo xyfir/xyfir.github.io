@@ -41,12 +41,14 @@ export default class Advertise extends React.Component {
 
   render() {
     return (
-      <div className="advertise">
-        <h2>Advertise</h2>
-        <p>
-          Use this form for requesting an ad slot. For more information, see{' '}
-          <a href="https://github.com/Xyfir/Ads">Xyfir Ads</a>.
-        </p>
+      <section className="advertise">
+        <header>
+          <h1>Advertise</h1>
+          <p>
+            Use this form for requesting an ad slot. For more information, see{' '}
+            <a href="https://github.com/Xyfir/Ads">Xyfir Ads</a>.
+          </p>
+        </header>
 
         <Paper
           zDepth={1}
@@ -61,7 +63,6 @@ export default class Advertise extends React.Component {
             type="email"
             label="Private Email"
             helpText="This is where we will respond to your request"
-            className="md-cell"
           />
 
           <TextField
@@ -73,7 +74,6 @@ export default class Advertise extends React.Component {
               'This will be posted publicly as the ad creator within the ' +
               'public ads repository'
             }
-            className="md-cell"
           />
 
           <TextField
@@ -83,7 +83,6 @@ export default class Advertise extends React.Component {
             type="text"
             label="Notes"
             helpText="Optional message to be sent along with your request"
-            className="md-cell"
           />
 
           <h3>General Ad Info</h3>
@@ -95,7 +94,6 @@ export default class Advertise extends React.Component {
             type="text"
             label="Keywords"
             helpText="A comma delimited list of keywords describing your ad"
-            className="md-cell"
           />
 
           <TextField
@@ -104,7 +102,6 @@ export default class Advertise extends React.Component {
             type="text"
             label="Link"
             helpText={"A link to whatever you're advertising"}
-            className="md-cell"
           />
 
           <h3>Normal Text Ad</h3>
@@ -115,7 +112,6 @@ export default class Advertise extends React.Component {
             type="text"
             label="Normal Title"
             helpText="Limit 75 characters"
-            className="md-cell"
           />
 
           <TextField
@@ -124,7 +120,6 @@ export default class Advertise extends React.Component {
             type="text"
             label="Normal Description"
             helpText="Limit 250 characters"
-            className="md-cell"
           />
 
           <h3>Short Text Ad</h3>
@@ -135,7 +130,6 @@ export default class Advertise extends React.Component {
             type="text"
             label="Short Title"
             helpText="Limit 25 characters"
-            className="md-cell"
           />
 
           <TextField
@@ -144,7 +138,6 @@ export default class Advertise extends React.Component {
             type="text"
             label="Short Description"
             helpText="Limit 100 characters"
-            className="md-cell"
           />
 
           <div className="recaptcha-wrapper">
@@ -160,7 +153,7 @@ export default class Advertise extends React.Component {
             Submit
           </Button>
         </Paper>
-      </div>
+      </section>
     );
   }
 }

@@ -18,7 +18,9 @@
     "link": "https://github.com/Xyfir",
     "icon": "/static/images/github.svg",
     "description": "Xyfir maintains many useful open source packages and projects on GitHub.",
-    "documentation": {}
+    "documentation": {
+      "legal": {}
+    }
   },
   "ptorx": {
     "name": "Ptorx",

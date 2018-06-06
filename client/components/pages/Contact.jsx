@@ -45,12 +45,14 @@ export default class Contact extends React.Component {
 
   render() {
     return (
-      <div className="contact-us">
-        <h2>Contact Us</h2>
-        <p>
-          Enter in your message below and we'll do our best to reply within a
-          day.
-        </p>
+      <section className="contact-us">
+        <header>
+          <h1>Contact Us</h1>
+          <p>
+            Enter in your message below and we'll do our best to reply within a
+            day.
+          </p>
+        </header>
 
         <Paper
           zDepth={1}
@@ -64,7 +66,6 @@ export default class Contact extends React.Component {
             menuItems={['N/A'].concat(
               Object.keys(projects).map(p => projects[p].name)
             )}
-            className="md-cell"
             placeholder="N/A"
           />
 
@@ -79,16 +80,9 @@ export default class Contact extends React.Component {
               'Bug Report',
               'Business Inquiry'
             ]}
-            className="md-cell"
           />
 
-          <TextField
-            id="text-email"
-            ref="email"
-            type="email"
-            label="Email"
-            className="md-cell"
-          />
+          <TextField id="text-email" ref="email" type="email" label="Email" />
 
           <TextField
             id="text-message"
@@ -96,7 +90,6 @@ export default class Contact extends React.Component {
             rows={10}
             type="text"
             label="Message"
-            className="md-cell"
             lineDirection="right"
           />
 
@@ -113,7 +106,7 @@ export default class Contact extends React.Component {
             Send
           </Button>
         </Paper>
-      </div>
+      </section>
     );
   }
 }

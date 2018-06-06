@@ -48,12 +48,12 @@ export default class ViewDocumentation extends React.Component {
   render() {
     return (
       <section className="view-documentation">
-        <h2 className="title">
-          {this.state.project.name}: {this.state.documentation.name}
-        </h2>
-        <span className="description">
-          {this.state.documentation.description}
-        </span>
+        <header>
+          <h1>
+            {this.state.project.name}: {this.state.documentation.name}
+          </h1>
+          <p>{this.state.documentation.description}</p>
+        </header>
 
         <div
           className="documentation markdown-body"

@@ -136,6 +136,12 @@ section.documentation-list {
   }
 }
 
+section.contact-form {
+  > div.md-menu-container {
+    width: 100%;
+  }
+}
+
 .markdown-body {
   text-align: left;
   padding: 1em;
