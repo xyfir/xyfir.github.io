@@ -7,7 +7,7 @@
     "build": "npm run build:css && npm run build:js && npm run build:favicons && npm run build:images",
     "build:js": "webpack-cli",
     "build:css": "npm run build:css:app && npm run build:css:xss",
-    "build:css:app": "node-sass client/styles/style.scss static/css/style.css --output-style compressed",
+    "build:css:app": "node-sass client/styles/app.scss static/css/app.css --output-style compressed",
     "build:css:xss": "node-sass client/styles/xss.scss static/css/xss.css --output-style compressed",
     "build:images": "node -e \"require('fs-extra').copy('res/images', 'static/images', console.log)\"",
     "build:favicons": "node favicons"
