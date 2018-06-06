@@ -4,6 +4,7 @@ import React from 'react';
 
 // Constants
 import { RECAPTCHA_KEY } from 'constants/config';
+import projects from 'constants/projects.json';
 
 export default class Contact extends React.Component {
   constructor(props) {
@@ -43,8 +44,6 @@ export default class Contact extends React.Component {
   }
 
   render() {
-    const { projects } = this.props.App.state;
-
     return (
       <div className="contact-us">
         <h2>Contact Us</h2>

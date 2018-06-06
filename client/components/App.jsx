@@ -28,7 +28,6 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      projects: {},
       drawer: false,
       toasts: []
     };
@@ -58,17 +57,6 @@ class App extends React.Component {
       this.forceUpdate();
     });
     window.addEventListener('popstate', e => this.forceUpdate());
-  }
-
-  componentWillMount() {
-    request
-      .get(
-        'https://raw.githubusercontent.com/Xyfir/Documentation/master/' +
-          'projects.json'
-      )
-      .end(
-        (err, res) => !err && this.setState({ projects: JSON.parse(res.text) })
-      );
   }
 
   /**
@@ -101,8 +89,6 @@ class App extends React.Component {
   }
 
   render() {
-    if (!Object.keys(this.state.projects).length) return null;
-
     const view = (() => {
       switch (location.pathname.split('/')[1]) {
         case 'documentation':

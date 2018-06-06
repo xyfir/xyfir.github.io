@@ -2,11 +2,14 @@ import request from 'superagent';
 import marked from 'marked';
 import React from 'react';
 
+// Constants
+import projects from 'constants/projects.json';
+
 export default class ViewDocumentation extends React.Component {
   constructor(props) {
     super(props);
 
-    const p = this.props.App.state.projects[this.props.project];
+    const p = projects[this.props.project];
 
     // Validate that project and documentation file exist
     if (p === undefined) return location.replace('/documentation');

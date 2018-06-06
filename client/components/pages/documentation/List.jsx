@@ -1,6 +1,9 @@
 import { Tabs, Tab, TabsContainer } from 'react-md';
 import React from 'react';
 
+// Constants
+import projects from 'constants/projects.json';
+
 export default class DocumentationList extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +16,7 @@ export default class DocumentationList extends React.Component {
     this.state = { tab: 0 };
   }
 
-  renderDocs(projects) {
+  _renderDocs() {
     return Object.keys(projects).map(p => {
       const pO = projects[p];
 
@@ -43,7 +46,7 @@ export default class DocumentationList extends React.Component {
     });
   }
 
-  renderLegalDocs(projects) {
+  _renderLegalDocs() {
     return Object.keys(projects).map(p => {
       const pO = projects[p];
 
@@ -67,8 +70,6 @@ export default class DocumentationList extends React.Component {
   }
 
   render() {
-    const { projects } = this.props.App.state;
-
     return (
       <section className="documentation-list">
         <TabsContainer
@@ -79,11 +80,11 @@ export default class DocumentationList extends React.Component {
         >
           <Tabs tabId="tab" className="tabs">
             <Tab label="Documentation">
-              <ul className="projects">{this.renderDocs(projects)}</ul>
+              <ul className="projects">{this._enderDocs()}</ul>
             </Tab>
 
             <Tab label="Legal Docs">
-              <ul className="projects">{this.renderLegalDocs(projects)}</ul>
+              <ul className="projects">{this._enderLegalDocs()}</ul>
             </Tab>
           </Tabs>
         </TabsContainer>
