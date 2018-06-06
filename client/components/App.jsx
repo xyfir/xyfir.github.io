@@ -15,7 +15,6 @@ import Documentation from 'components/pages/documentation/Documentation';
 import Advertise from 'components/pages/Advertise';
 import Contact from 'components/pages/Contact';
 import Network from 'components/pages/Network';
-import About from 'components/pages/About';
 
 // Modules
 import AppMetadata from 'lib/AppMetadata';
@@ -97,8 +96,6 @@ class App extends React.Component {
           return <Advertise App={this} />;
         case 'contact':
           return <Contact App={this} />;
-        case 'about':
-          return <About App={this} />;
         case 'network':
         default:
           return <Network App={this} />;
@@ -142,12 +139,6 @@ class App extends React.Component {
               <ListItem
                 leftIcon={<FontIcon>contact_mail</FontIcon>}
                 primaryText="Contact"
-              />
-            </a>,
-            <a href="/about">
-              <ListItem
-                leftIcon={<FontIcon>info_outline</FontIcon>}
-                primaryText="About Us"
               />
             </a>,
             <a href="/advertise">
