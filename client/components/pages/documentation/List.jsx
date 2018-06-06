@@ -1,4 +1,3 @@
-import { Tabs, Tab, TabsContainer } from 'react-md';
 import React from 'react';
 
 // Constants
@@ -28,7 +27,7 @@ export default class DocumentationList extends React.Component {
               <li>No documentation</li>
             ) : (
               Object.keys(pO.documentation).map(d => {
-                if (d == 'legal') return <span />;
+                if (d == 'legal') return null;
 
                 const dO = pO.documentation[d];
 
@@ -54,15 +53,19 @@ export default class DocumentationList extends React.Component {
         <li className="project">
           {pO.name}
           <ul>
-            {Object.keys(pO.documentation.legal).map(d => {
-              const dO = pO.documentation.legal[d];
+            {!Object.keys(pO.documentation.legal).length ? (
+              <li>No documentation</li>
+            ) : (
+              Object.keys(pO.documentation.legal).map(d => {
+                const dO = pO.documentation.legal[d];
 
-              return (
-                <li className="documentation-item">
-                  <a href={`/documentation/${p}/${d}`}>{dO.name}</a>
-                </li>
-              );
-            })}
+                return (
+                  <li className="documentation-item">
+                    <a href={`/documentation/${p}/${d}`}>{dO.name}</a>
+                  </li>
+                );
+              })
+            )}
           </ul>
         </li>
       );
@@ -71,24 +74,23 @@ export default class DocumentationList extends React.Component {
 
   render() {
     return (
-      <section className="documentation-list">
-        <TabsContainer
-          colored
-          onTabChange={tab => this.setState({ tab })}
-          panelClassName="md-grid"
-          activeTabIndex={this.state.tab}
-        >
-          <Tabs tabId="tab" className="tabs">
-            <Tab label="Documentation">
-              <ul className="projects">{this._enderDocs()}</ul>
-            </Tab>
+      <React.Fragment>
+        <section className="documentation-list">
+          <header>
+            <h2>Documentation</h2>
+          </header>
+          <ul className="projects">{this._renderDocs()}</ul>
+        </section>
 
-            <Tab label="Legal Docs">
-              <ul className="projects">{this._enderLegalDocs()}</ul>
-            </Tab>
-          </Tabs>
-        </TabsContainer>
-      </section>
+        <hr className="section-divider" />
+
+        <section className="documentation-list">
+          <header>
+            <h2>Legal Docs</h2>
+          </header>
+          <ul className="projects">{this._renderLegalDocs()}</ul>
+        </section>
+      </React.Fragment>
     );
   }
 }
