@@ -210,6 +210,11 @@ class XSS extends React.Component {
               reliable foundation to build upon so as to ensure a successful
               future for everything we build.
             </p>
+            <p>
+              Xyfir is also heavily active in the open source community. Check
+              out some of our contirbutions on
+              <a href="https://github.com/Xyfir"> Github</a>.
+            </p>
           </section>
 
           <section className="contact">
