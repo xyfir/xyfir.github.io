@@ -1,3 +1,4 @@
+import { List, ListItem, Subheader } from 'react-md';
 import React from 'react';
 
 // Constants
@@ -11,86 +12,50 @@ export default class DocumentationList extends React.Component {
       title: 'Documentation',
       description: `Find documentation for all of the projects in the Xyfir Network.`
     };
-
-    this.state = { tab: 0 };
-  }
-
-  _renderDocs() {
-    return Object.keys(projects).map(p => {
-      const pO = projects[p];
-
-      return (
-        <li className="project">
-          {pO.name}
-          <ul>
-            {Object.keys(pO.documentation).length == 1 ? (
-              <li>No documentation</li>
-            ) : (
-              Object.keys(pO.documentation).map(d => {
-                if (d == 'legal') return null;
-
-                const dO = pO.documentation[d];
-
-                return (
-                  <li className="documentation-item">
-                    <a href={`/documentation/${p}/${d}`}>{dO.name}</a>
-                    <span className="description">{dO.description}</span>
-                  </li>
-                );
-              })
-            )}
-          </ul>
-        </li>
-      );
-    });
-  }
-
-  _renderLegalDocs() {
-    return Object.keys(projects).map(p => {
-      const pO = projects[p];
-
-      return (
-        <li className="project">
-          {pO.name}
-          <ul>
-            {!Object.keys(pO.documentation.legal).length ? (
-              <li>No documentation</li>
-            ) : (
-              Object.keys(pO.documentation.legal).map(d => {
-                const dO = pO.documentation.legal[d];
-
-                return (
-                  <li className="documentation-item">
-                    <a href={`/documentation/${p}/${d}`}>{dO.name}</a>
-                  </li>
-                );
-              })
-            )}
-          </ul>
-        </li>
-      );
-    });
   }
 
   render() {
     return (
-      <React.Fragment>
-        <section className="documentation-list">
-          <header>
-            <h2>Documentation</h2>
-          </header>
-          <ul className="projects">{this._renderDocs()}</ul>
-        </section>
+      <List className="documentation md-paper md-paper--1 section">
+        <Subheader primary primaryText="Documentation" />
+        {Object.keys(projects)
+          .filter(p => Object.keys(projects[p].documentation).length > 1)
+          .map(p => (
+            <ListItem
+              key={p}
+              primaryText={projects[p].name}
+              nestedItems={Object.keys(projects[p].documentation)
+                .filter(d => d != 'legal')
+                .map(d => (
+                  <a key={d} href={`/documentation/${p}/${d}`}>
+                    <ListItem
+                      primaryText={projects[p].documentation[d].name}
+                      secondaryText={projects[p].documentation[d].description}
+                    />
+                  </a>
+                ))}
+            />
+          ))}
 
-        <hr className="section-divider" />
-
-        <section className="documentation-list">
-          <header>
-            <h2>Legal Docs</h2>
-          </header>
-          <ul className="projects">{this._renderLegalDocs()}</ul>
-        </section>
-      </React.Fragment>
+        <Subheader primary primaryText="Legal Docs" />
+        {Object.keys(projects)
+          .filter(p => Object.keys(projects[p].documentation.legal).length)
+          .map(p => (
+            <ListItem
+              key={p}
+              primaryText={projects[p].name}
+              nestedItems={Object.keys(projects[p].documentation.legal).map(
+                d => (
+                  <a key={d} href={`/documentation/${p}/${d}`}>
+                    <ListItem
+                      primaryText={projects[p].documentation.legal[d].name}
+                    />
+                  </a>
+                )
+              )}
+            />
+          ))}
+      </List>
     );
   }
 }

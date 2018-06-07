@@ -117,23 +117,9 @@ section.network > ul.projects {
   }
 }
 
-section.documentation-list {
-  margin-top: -1em;
-
-  ul.projects {
-    width: 50%;
-    margin: auto;
-    text-align: left;
-    margin-top: 1em;
-
-    li.documentation-item {
-      .description {
-        font-size: 90%;
-        display: block;
-        color: $md-grey-700;
-      }
-    }
-  }
+ul.md-list.documentation {
+  max-width: 40em;
+  margin: auto;
 }
 
 section.contact-form {
