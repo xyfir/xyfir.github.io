@@ -13,6 +13,10 @@ export default class Network extends React.Component {
     };
   }
 
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     return (
       <section className="network">
