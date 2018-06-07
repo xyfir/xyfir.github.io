@@ -1,6 +1,6 @@
 {
   "name": "www.xyfir.com",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "description": "",
   "main": "app.js",
   "scripts": {
@@ -45,6 +45,6 @@
     "favicons": "^5.1.1",
     "node-sass": "^4.9.0",
     "prettier": "^1.13.4",
-    "webpack": "^4.11.0"
+    "webpack": "^4.11.1"
   }
 }
