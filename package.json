@@ -1,6 +1,6 @@
 {
   "name": "www.xyfir.com",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "description": "",
   "main": "app.js",
   "scripts": {
@@ -28,11 +28,11 @@
     "express": "^4.16.3",
     "fs-extra": "^6.0.1",
     "github-markdown-css": "^2.10.0",
-    "mailgun-js": "^0.18.0",
+    "mailgun-js": "^0.18.1",
     "marked": "^0.4.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-md": "^1.3.5",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-md": "^1.4.1",
     "superagent": "^3.8.3",
     "xyfir-ads": "^1.0.0"
   },
@@ -44,7 +44,7 @@
     "compression-webpack-plugin": "^1.1.3",
     "favicons": "^5.1.1",
     "node-sass": "^4.9.0",
-    "prettier": "^1.13.4",
-    "webpack": "^4.11.1"
+    "prettier": "^1.13.6",
+    "webpack": "^4.12.1"
   }
 }
