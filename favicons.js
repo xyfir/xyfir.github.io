@@ -82,6 +82,11 @@ function generate(icon, output, name) {
       name: 'xyBooks',
       icon: 'xybooks.png',
       output: 'static/icons/xyfir-books/'
+    },
+    {
+      name: 'BrHop',
+      icon: 'brhop.png',
+      output: 'static/icons/brhop/'
     }
   ];
 
