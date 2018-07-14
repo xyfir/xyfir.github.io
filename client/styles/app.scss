@@ -140,3 +140,16 @@ section.contact-form {
 hr.section-divider {
   margin: 2em;
 }
+
+div.xyfir-blog {
+  text-align: left;
+
+  > input.search {
+    margin: 0 1em;
+    width: calc(100% - 2em) !important;
+  }
+
+  div.markdown-body {
+    padding: 0;
+  }
+}
