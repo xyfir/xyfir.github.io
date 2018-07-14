@@ -7,8 +7,8 @@ import {
   Button
 } from 'react-md';
 import { render } from 'react-dom';
-import request from 'superagent';
 import React from 'react';
+import Blog from '@xyfir/blog';
 
 // Components
 import Documentation from 'components/pages/documentation/Documentation';
@@ -89,7 +89,9 @@ class App extends React.Component {
 
   render() {
     const view = (() => {
-      switch (location.pathname.split('/')[1]) {
+      const paths = location.pathname.split('/');
+
+      switch (paths[1]) {
         case 'documentation':
           return <Documentation App={this} />;
         case 'advertise':
@@ -97,6 +99,14 @@ class App extends React.Component {
         case 'contact':
           return <Contact App={this} />;
         case 'network':
+        case 'blog':
+          return (
+            <Blog
+              post={paths.length == 6 ? paths.slice(2).join('/') : null}
+              repository="Xyfir/blog-posts"
+              linkFormat="/blog/{{post.id}}"
+            />
+          );
         default:
           return <Network App={this} />;
       }
@@ -147,10 +157,16 @@ class App extends React.Component {
                 primaryText="Advertise"
               />
             </a>,
-            <a href="/documentation">
+            <a href="/documentation/">
               <ListItem
                 leftIcon={<FontIcon>insert_drive_file</FontIcon>}
                 primaryText="Documentation"
+              />
+            </a>,
+            <a href="/blog/">
+              <ListItem
+                leftIcon={<FontIcon>mode_comment</FontIcon>}
+                primaryText="Blog"
               />
             </a>
           ]}
