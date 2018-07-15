@@ -144,12 +144,18 @@ hr.section-divider {
 div.xyfir-blog {
   text-align: left;
 
-  > input.search {
-    margin: 0 1em;
-    width: calc(100% - 2em) !important;
+  &.explore {
+    padding: 1em;
   }
 
-  div.markdown-body {
-    padding: 0;
+  &.view-post {
+    p.description {
+      width: 100%;
+      margin-bottom: 0.4em;
+    }
+
+    div.markdown-body {
+      padding: 0;
+    }
   }
 }
