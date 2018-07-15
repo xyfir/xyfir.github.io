@@ -105,6 +105,11 @@ class App extends React.Component {
               post={paths.length == 6 ? paths.slice(2).join('/') : null}
               repository="Xyfir/blog-posts"
               linkFormat="/blog/{{post.id}}"
+              titleFormat={['Blog – Xyfir', '{{post.title}} – Blog – Xyfir']}
+              descriptionFormat={[
+                'The Xyfir Network Blog.',
+                '{{post.description}}'
+              ]}
             />
           );
         default:
