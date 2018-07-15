@@ -1,6 +1,6 @@
 {
   "name": "www.xyfir.com",
-  "version": "2.9.0",
+  "version": "2.9.1",
   "description": "",
   "main": "app.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@xyfir/blog": "^0.1.0",
+    "@xyfir/blog": "^0.2.0",
     "app-module-path": "^2.2.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
