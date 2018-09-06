@@ -92,20 +92,20 @@ export default class Contact extends React.Component {
             label="Message"
             lineDirection="right"
           />
-
-          <div className="recaptcha-wrapper">
-            <div className="g-recaptcha" data-sitekey={RECAPTCHA_KEY} />
-          </div>
-
-          <Button
-            raised
-            primary
-            iconChildren="send"
-            onClick={() => this.onSend()}
-          >
-            Send
-          </Button>
         </Paper>
+
+        <div className="recaptcha-wrapper">
+          <div className="g-recaptcha" data-sitekey={RECAPTCHA_KEY} />
+        </div>
+
+        <Button
+          raised
+          primary
+          iconChildren="send"
+          onClick={() => this.onSend()}
+        >
+          Send
+        </Button>
       </section>
     );
   }
