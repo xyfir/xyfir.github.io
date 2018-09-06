@@ -98,7 +98,6 @@ class App extends React.Component {
           return <Advertise App={this} />;
         case 'contact':
           return <Contact App={this} />;
-        case 'network':
         case 'blog':
           return (
             <Blog
@@ -112,6 +111,7 @@ class App extends React.Component {
               ]}
             />
           );
+        case 'network':
         default:
           return <Network App={this} />;
       }
