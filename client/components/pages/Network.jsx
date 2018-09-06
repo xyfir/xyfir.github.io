@@ -22,15 +22,13 @@ export default class Network extends React.Component {
       <section className="network">
         <header>
           <h1>The Xyfir Network</h1>
-          <p>
-            Xyfir has built and maintains a large amount of applications, sites,
-            and services. Here are a few of our actively-developed projects:
-          </p>
+          <p>Xyfir has a lot of projects. Here are a few:</p>
         </header>
 
         <ul className="projects">
           {Object.keys(projects)
             .sort(() => Math.round(Math.random()))
+            .filter(p => projects[p].promote)
             .map(p => (
               <li className="project" key={p}>
                 <img src={projects[p].icon} />
