@@ -84,7 +84,13 @@ export default class Advertise extends React.Component {
             label="Notes"
             helpText="Optional message to be sent along with your request"
           />
+        </Paper>
 
+        <Paper
+          zDepth={1}
+          component="section"
+          className="advertise-form section flex"
+        >
           <h3>General Ad Info</h3>
 
           <TextField
@@ -103,7 +109,13 @@ export default class Advertise extends React.Component {
             label="Link"
             helpText={"A link to whatever you're advertising"}
           />
+        </Paper>
 
+        <Paper
+          zDepth={1}
+          component="section"
+          className="advertise-form section flex"
+        >
           <h3>Normal Text Ad</h3>
 
           <TextField
@@ -121,7 +133,13 @@ export default class Advertise extends React.Component {
             label="Normal Description"
             helpText="Limit 250 characters"
           />
+        </Paper>
 
+        <Paper
+          zDepth={1}
+          component="section"
+          className="advertise-form section flex"
+        >
           <h3>Short Text Ad</h3>
 
           <TextField
@@ -139,20 +157,20 @@ export default class Advertise extends React.Component {
             label="Short Description"
             helpText="Limit 100 characters"
           />
-
-          <div className="recaptcha-wrapper">
-            <div className="g-recaptcha" data-sitekey={RECAPTCHA_KEY} />
-          </div>
-
-          <Button
-            raised
-            primary
-            iconChildren="send"
-            onClick={() => this.onSubmit()}
-          >
-            Submit
-          </Button>
         </Paper>
+
+        <div className="recaptcha-wrapper">
+          <div className="g-recaptcha" data-sitekey={RECAPTCHA_KEY} />
+        </div>
+
+        <Button
+          raised
+          primary
+          iconChildren="send"
+          onClick={() => this.onSubmit()}
+        >
+          Submit
+        </Button>
       </section>
     );
   }
