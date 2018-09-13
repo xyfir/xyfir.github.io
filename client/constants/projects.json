@@ -117,6 +117,16 @@
         "location": "xyfir-annotations/ebook-readers",
         "description": "A list of authorized affiliates whose ebook reader systems support xyAnnotations."
       },
+      "affiliates": {
+        "name": "Become an Affiliate",
+        "location": "xyfir-annotations/affiliates",
+        "description": "Why you should, how to, and what you get if you become an affiliate and integrate xyAnnotations into your ebook reader app or device."
+      },
+      "authors": {
+        "name": "Author Services",
+        "location": "xyfir-annotations/authors",
+        "description": "Services available for authors and publishers looking to annotate their own books on xyAnnotations."
+      },
       "legal": {
         "privacy": {
           "name": "Privacy Policy",
