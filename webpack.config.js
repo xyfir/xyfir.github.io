@@ -1,35 +1,21 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-const config = require('./config');
+const CONFIG = require('./config');
 const path = require('path');
 
-const plugins = [];
-const isProd = config.environment.type == 'production';
-
-if (isProd) {
-  plugins.push(
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    new CompressionPlugin({
-      asset: '[path].gz'
-    })
-  );
-}
+const PROD = CONFIG.environment.type == 'production';
 
 module.exports = {
-  mode: config.environment.type,
+  mode: CONFIG.environment.type,
 
-  entry: {
-    App: './client/components/App.jsx',
-    XSS: './client/components/XSS.jsx'
-  },
+  entry: './client/components/App.jsx',
 
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'static/js')
+    publicPath: '/static/',
+    filename: PROD ? '[name].[hash].js' : '[name].js',
+    path: path.resolve(__dirname, 'static')
   },
 
   resolve: {
@@ -43,17 +29,83 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         include: [
-          path.resolve(__dirname, 'client/components'),
-          path.resolve(__dirname, 'client/constants'),
-          path.resolve(__dirname, 'client/lib')
+          path.resolve(__dirname, 'client', 'components'),
+          path.resolve(__dirname, 'client', 'constants'),
+          path.resolve(__dirname, 'client', 'lib')
         ],
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react']
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                targets: {
+                  browsers: [
+                    'last 1 iOS version',
+                    'last 2 Chrome versions',
+                    'last 1 Android version',
+                    'last 1 Firefox version'
+                  ]
+                }
+              }
+            ],
+            '@babel/preset-react'
+          ],
+          plugins: [
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-syntax-dynamic-import'
+          ]
         }
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          PROD ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: { outputStyle: PROD ? 'compressed' : 'expanded' }
+          }
+        ]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { publicPath: '/static' }
+          }
+        ]
       }
     ]
   },
 
-  plugins
+  plugins: [
+    PROD
+      ? new MiniCssExtractPlugin({
+          filename: '[name].[hash].css',
+          chunkFilename: '[id].[hash].css'
+        })
+      : null,
+    new HtmlWebpackPlugin({
+      minify: PROD,
+      template: 'template.html'
+    }),
+    PROD ? new CompressionPlugin({ filename: '[path].gz' }) : null,
+    PROD ? null : new webpack.HotModuleReplacementPlugin()
+  ].filter(p => p !== null),
+
+  devtool: 'inline-source-map',
+
+  watchOptions: {
+    aggregateTimeout: 500,
+    ignored: ['node_modules', 'static']
+  },
+
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, 'static'),
+    port: 20091,
+    hot: true
+  }
 };
