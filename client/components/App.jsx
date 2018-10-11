@@ -1,4 +1,5 @@
 import 'github-markdown-css/github-markdown.css';
+import '@xyfir/blog/dist/blog.css';
 import 'styles/app.scss';
 
 import {
