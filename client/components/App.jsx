@@ -1,3 +1,6 @@
+import 'github-markdown-css/github-markdown.css';
+import 'styles/app.scss';
+
 import {
   ListItem,
   FontIcon,
