@@ -79,9 +79,9 @@ function generate(icon, output, name) {
       output: 'static/icons/ptorx/'
     },
     {
-      name: 'xyBooks',
-      icon: 'xybooks.png',
-      output: 'static/icons/xyfir-books/'
+      name: 'xyReader',
+      icon: 'xyreader.png',
+      output: 'static/icons/xyfir-reader/'
     },
     {
       name: 'BrHop',

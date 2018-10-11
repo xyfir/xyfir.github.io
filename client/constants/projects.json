@@ -139,26 +139,26 @@
       }
     }
   },
-  "xyfir-books": {
-    "name": "xyBooks",
-    "link": "https://books.xyfir.com",
-    "icon": "https://books.xyfir.com/static/icons/android-chrome-256x256.png",
+  "xyfir-reader": {
+    "name": "xyReader",
+    "link": "https://reader.xyfir.com",
+    "icon": "/static/icons/xyfir-reader/android-chrome-256x256.png",
     "promote": true,
-    "description": "An all-in-one, cloud-synced ebook reader, storage, and management system.",
+    "description": "A simple and free EPUB ebook reader for web, iOS, and Android.",
     "documentation": {
       "help": {
         "name": "Help Documents",
-        "location": "xyfir-books/help",
-        "description": "Learn how to utilize Xyfir Books' features to store, manage, and read your ebooks."
+        "location": "xyfir-reader/help",
+        "description": "Learn how to utilize advanced xyReader features."
       },
       "legal": {
         "privacy": {
           "name": "Privacy Policy",
-          "location": "xyfir-books/privacy"
+          "location": "xyfir-reader/privacy"
         },
         "tos": {
           "name": "Terms of Service",
-          "location": "xyfir-books/tos"
+          "location": "xyfir-reader/tos"
         }
       }
     }
