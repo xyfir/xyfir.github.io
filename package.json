@@ -1,6 +1,6 @@
 {
   "name": "www.xyfir.com",
-  "version": "2.9.4",
+  "version": "2.9.5",
   "description": "",
   "main": "app.js",
   "scripts": {
@@ -32,8 +32,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-md": "^1.7.1",
-    "superagent": "^4.0.0-beta.5",
-    "xyfir-ads": "^1.0.0"
+    "superagent": "^4.0.0-beta.5"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
