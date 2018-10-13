@@ -1,13 +1,11 @@
-const xyAds = require('xyfir-ads');
+const getAds = require('lib/get-ads');
 
 /*
-  GET api/ads
+  GET /api/ads
   OPTIONAL
     count: number, xyfir:  boolean, blacklist: string, keywords: string
   RETURN
     [{ https://github.com/Xyfir/Ads/blob/master/ads.json }]
-  DESCRIPTION
-    Use xyfir-ads package from anywhere
 */
 
 module.exports = async function(req, res) {
@@ -21,5 +19,5 @@ module.exports = async function(req, res) {
 
   if (req.query.xyfir) options.xyfir = !!+req.query.xyfir;
 
-  res.json(await xyAds(options));
+  res.json(await getAds(options));
 };
