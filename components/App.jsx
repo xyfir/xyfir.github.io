@@ -79,6 +79,18 @@ const App = withStyles(theme => ({
     <Divider className={classes.divider} />
 
     <Typography variant="h2" className={classes.h2}>
+      xyReader
+    </Typography>
+    <Typography className={classes.p}>
+      <a href="https://reader.xyfir.com/" className={classes.a}>
+        reader.xyfir.com
+      </a>{' '}
+      — Simple, multi-platform EPUB reader with native xyAnnotations support.
+    </Typography>
+
+    <Divider className={classes.divider} />
+
+    <Typography variant="h2" className={classes.h2}>
       Open Source
     </Typography>
     <Typography className={classes.p}>
