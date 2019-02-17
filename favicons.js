@@ -13,7 +13,7 @@ const writeFile = util.promisify(fs.writeFile);
 function generate(icon, output, name) {
   return new Promise((resolve, reject) =>
     favicons(
-      `res/icons/${icon}`,
+      `icons/${icon}`,
       {
         path: `/${output}`,
         appName: name,
@@ -42,14 +42,12 @@ function generate(icon, output, name) {
       },
       async (error, response) => {
         if (error) reject(error);
-
         for (let img of response.images) {
           await writeFile(
             path.resolve(__dirname, output, img.name),
             img.contents
           );
         }
-
         resolve();
       }
     )
@@ -61,32 +59,27 @@ function generate(icon, output, name) {
     {
       name: 'Xyfir',
       icon: 'xyfir.png',
-      output: 'static/icons/xyfir/'
-    },
-    {
-      name: 'xyButtons',
-      icon: 'xybuttons.png',
-      output: 'static/icons/xyfir-buttons/'
+      output: 'dist/icons/xyfir/'
     },
     {
       name: 'xyAnnotations',
       icon: 'xyannotations.png',
-      output: 'static/icons/xyfir-annotations/'
+      output: 'dist/icons/xyfir-annotations/'
     },
     {
       name: 'Ptorx',
       icon: 'ptorx.png',
-      output: 'static/icons/ptorx/'
+      output: 'dist/icons/ptorx/'
     },
     {
       name: 'xyReader',
       icon: 'xyreader.png',
-      output: 'static/icons/xyfir-reader/'
+      output: 'dist/icons/xyfir-reader/'
     },
     {
       name: 'BrHop',
       icon: 'brhop.png',
-      output: 'static/icons/brhop/'
+      output: 'dist/icons/brhop/'
     }
   ];
 
