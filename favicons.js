@@ -75,11 +75,6 @@ function generate(icon, output, name) {
       name: 'xyReader',
       icon: 'xyreader.png',
       output: 'dist/icons/xyfir-reader/'
-    },
-    {
-      name: 'BrHop',
-      icon: 'brhop.png',
-      output: 'dist/icons/brhop/'
     }
   ];
 
