@@ -1,11 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "esnext",
     "baseUrl": "./"
-  },
-  "exclude": [
-    "node_modules",
-    "client",
-    "static"
-  ]
+  }
 }
