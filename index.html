@@ -15,11 +15,18 @@
     />
 
     <style>
+      footer {
+        font-size: small;
+        margin: 2em 0;
+      }
       body {
         background-color: #fff;
         font-family: monospace;
+        text-align: center;
+        max-width: 20em;
         font-size: 150%;
-        margin: 0 2em;
+        padding: 0 2em;
+        margin: auto;
       }
       hr {
         border: solid 0.1em black;
@@ -47,7 +54,7 @@
       <hr />
 
       <h2><a href="https://github.com/xyfir">open source</a></h2>
-      <p>permissively licensed software</p>
+      <p>libraries and applications on github</p>
       <hr />
 
       <h2><a href="https://annotations.xyfir.com">xyannotations</a></h2>
@@ -56,6 +63,13 @@
 
       <h2><a href="https://reader.xyfir.com">xyreader</a></h2>
       <p>simple epub reader</p>
+      <hr />
+
+      <footer>© <span id="year"></span> xyfir, llc</footer>
     </main>
+
+    <script>
+      document.getElementById('year').innerHTML = new Date().getFullYear();
+    </script>
   </body>
 </html>
