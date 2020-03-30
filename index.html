@@ -36,22 +36,9 @@
         min-height: 100vh;
         display: flex;
       }
-      hr {
-        border: solid 0.1em #fff;
-        width: 100%;
-      }
       h1 {
         font-size: 200%;
-      }
-      h1,
-      h2 {
         margin: 0;
-      }
-      p {
-        margin-bottom: 0;
-      }
-      a {
-        color: lightgray;
       }
     </style>
   </head>
@@ -59,34 +46,9 @@
     <main>
       <section>
         <h1>xyfir</h1>
-        <p>
-          send us an email at
-          <a href="mailto:contact@xyfir.com">contact@xyfir.com</a>
-        </p>
       </section>
-      <hr />
-
-      <section>
-        <h2><a href="https://www.illuminsight.com">illuminsight</a></h2>
-        <p>read smarter</p>
-      </section>
-      <hr />
-
-      <section>
-        <h2><a href="https://ptorx.com">ptorx</a></h2>
-        <p>hide your email addresses</p>
-      </section>
-      <hr />
-
-      <section>
-        <h2><a href="https://github.com/xyfir">open source</a></h2>
-        <p>libraries and applications on github</p>
-      </section>
-      <hr />
-
       <footer>© <span id="year"></span> xyfir, llc</footer>
     </main>
-
     <script>
       document.getElementById("year").innerHTML = new Date().getFullYear();
     </script>
